@@ -1,4 +1,4 @@
 {
-  "include_standard_weekly": true,
-  "standard_weekly_items": "Eggs, Milk, Snacks, Coffee, Fruit, Seasonal Vegetables, Ruby Snacks, Zane Snacks, Mom's Snacks, Dad's Snacks"
+  "include_standard_weekly": false,
+  "standard_weekly_items": ""
 }

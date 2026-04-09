@@ -1436,6 +1436,9 @@
       "Salsa": [
         "meal_media/american_tacos/ingredient_photos/salsa/salsa_01.jpeg"
       ],
+      "Taco Shell's (optional)": [
+        "meal_media/american_tacos/ingredient_photos/taco_shells_optional/taco_shells_optional_01.webp"
+      ],
       "Avocado": [
         "meal_media/american_tacos/ingredient_photos/avocado/avocado_01.jpeg"
       ],
@@ -1452,6 +1455,9 @@
       ],
       "1": [
         "meal_media/american_tacos/step_photos/step_2/step_2_01.jpeg"
+      ],
+      "2": [
+        "meal_media/american_tacos/step_photos/step_3/step_3_01.jpeg"
       ],
       "3": [
         "meal_media/american_tacos/step_photos/step_4/step_4_01.jpeg"
@@ -1934,46 +1940,6 @@
     "testy2": ""
   },
   {
-    "description": "Delete Me again",
-    "category": "Breakfast/Lunch/Dinner",
-    "preference": "",
-    "time": "",
-    "cost": "",
-    "fill": "",
-    "ingredients": [
-      "All the good stuff"
-    ],
-    "directions": "Do that thang first, the other thingy next",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Test Meal",
-    "category": "Breakfast/Lunch/Dinner",
-    "preference": "",
-    "time": "",
-    "cost": "",
-    "fill": "",
-    "ingredients": [
-      "Test ingredient 1",
-      "salsa",
-      "mexican salt",
-      "classic salt",
-      "other stuff"
-    ],
-    "directions": "Step 1) Open the can\nStep 2) pour can in hole\nStep 3) more stuff",
-    "testy1": "",
-    "testy2": "",
-    "testy3": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {}
-  },
-  {
     "description": "Salmon Bowl with Quinoa",
     "category": "Lunch/Dinner",
     "preference": "Medium",
@@ -1994,5 +1960,37 @@
     "meal_photos": [],
     "ingredient_photos": {},
     "step_photos": {}
+  },
+  {
+    "description": "Cereal",
+    "category": "Breakfast",
+    "preference": "",
+    "time": "",
+    "cost": "",
+    "fill": "",
+    "ingredients": [
+      "Cereal",
+      "Milk"
+    ],
+    "directions": "1) Put cereal and milk into a bowl.",
+    "testy1": "",
+    "testy2": "",
+    "testy3": "",
+    "meal_photos": [
+      "meal_media/cereal/meal_photos/meal/meal_01.jpeg"
+    ],
+    "ingredient_photos": {
+      "Cereal": [
+        "meal_media/cereal/ingredient_photos/cereal/cereal_01.jpeg"
+      ],
+      "Milk": [
+        "meal_media/cereal/ingredient_photos/milk/milk_01.jpeg"
+      ]
+    },
+    "step_photos": {
+      "0": [
+        "meal_media/cereal/step_photos/step_1/step_1_01.jpeg"
+      ]
+    }
   }
 ]
