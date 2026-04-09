@@ -1,0 +1,1 @@
+Optional step photos can go in step folders referenced by meal.json.

@@ -1,0 +1,1 @@
+Optional ingredient photos can go in subfolders referenced by meal.json.

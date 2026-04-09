@@ -1,0 +1,34 @@
+{
+  "description": "Example Meal",
+  "category": "Dinner",
+  "preference": "Medium",
+  "time": "Medium",
+  "cost": "$$",
+  "fill": "Complete",
+  "ingredients": [
+    "1 lb chicken breast",
+    "2 cups rice",
+    "1 cup broccoli"
+  ],
+  "directions": "1. Prep ingredients\n2. Cook the protein\n3. Add remaining items and serve",
+  "meal_photos": [
+    "meal_photos/finished_meal.jpg"
+  ],
+  "ingredient_photos": {
+    "1 lb chicken breast": [
+      "ingredient_photos/chicken/chicken.jpg"
+    ],
+    "2 cups rice": [
+      "ingredient_photos/rice/rice.jpg"
+    ]
+  },
+  "step_photos": {
+    "0": [
+      "step_photos/step_1/step1.jpg"
+    ],
+    "1": [
+      "step_photos/step_2/step2.jpg"
+    ]
+  },
+  "notes": "Add any custom column fields as extra top-level keys in this meal.json file."
+}
