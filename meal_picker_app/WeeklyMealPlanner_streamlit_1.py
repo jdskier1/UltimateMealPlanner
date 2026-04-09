@@ -200,21 +200,30 @@ def load_saved_schedule() -> dict:
         offset_days = int(offset_days)
     except Exception:
         offset_days = 0
-    return {"offset_days": max(0, min(365, offset_days)), "slots": cleaned_slots}
+    num_days = data.get("num_days", 7)
+    try:
+        num_days = int(num_days)
+    except Exception:
+        num_days = 7
+    num_days = max(1, min(31, num_days))
+    return {"offset_days": max(0, min(365, offset_days)), "num_days": num_days, "slots": cleaned_slots}
 
 
 def apply_saved_schedule_to_session() -> None:
     schedule = load_saved_schedule()
-    for i in range(7):
+    for i in range(31):
         for part in DAY_PARTS:
             st.session_state.setdefault(slot_key(i, part), schedule["slots"].get(slot_key(i, part), "--"))
     st.session_state.setdefault("offset_days", schedule.get("offset_days", 0))
+    st.session_state.setdefault("num_days", schedule.get("num_days", 7))
 
 
 def save_current_schedule() -> None:
+    num_days = max(1, min(31, int(st.session_state.get("num_days", 7))))
     payload = {
         "offset_days": int(st.session_state.get("offset_days", 0)),
-        "slots": {slot_key(i, part): st.session_state.get(slot_key(i, part), "--") for i in range(7) for part in DAY_PARTS},
+        "num_days": num_days,
+        "slots": {slot_key(i, part): st.session_state.get(slot_key(i, part), "--") for i in range(31) for part in DAY_PARTS},
     }
     with open(SCHEDULE_PATH, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
@@ -406,7 +415,7 @@ def slot_key(day_index: int, day_part: str) -> str:
 
 
 def ensure_slot_defaults() -> None:
-    for i in range(7):
+    for i in range(31):
         for part in DAY_PARTS:
             st.session_state.setdefault(slot_key(i, part), "--")
 
@@ -414,7 +423,7 @@ def ensure_slot_defaults() -> None:
 def selected_meals() -> List[dict]:
     lookup = meal_lookup()
     chosen = []
-    for i in range(7):
+    for i in range(31):
         for part in DAY_PARTS:
             meal_name = st.session_state.get(slot_key(i, part), "--")
             if meal_name and meal_name != "--" and meal_name in lookup:
@@ -423,7 +432,7 @@ def selected_meals() -> List[dict]:
 
 
 def clear_schedule() -> None:
-    for i in range(7):
+    for i in range(31):
         for part in DAY_PARTS:
             st.session_state[slot_key(i, part)] = "--"
 
@@ -433,13 +442,14 @@ def auto_fill_blanks(day_part: str, options: List[str]) -> None:
     if not candidates:
         return
 
-    blank_slots = [i for i in range(7) if st.session_state.get(slot_key(i, day_part), "--") == "--"]
+    num_days = max(1, min(31, int(st.session_state.get("num_days", 7))))
+    blank_slots = [i for i in range(num_days) if st.session_state.get(slot_key(i, day_part), "--") == "--"]
     if not blank_slots:
         return
 
     used_all = {
         st.session_state.get(slot_key(i, part), "--")
-        for i in range(7)
+        for i in range(num_days)
         for part in DAY_PARTS
     }
     used_all.discard("--")
@@ -471,10 +481,11 @@ def add_random_meal_to_random_day(day_part: str, options: List[str]) -> None:
     candidates = [name for name in options if name != "--"]
     if not candidates:
         return
-    blank_slots = [i for i in range(7) if st.session_state.get(slot_key(i, day_part), "--") == "--"]
+    num_days = max(1, min(31, int(st.session_state.get("num_days", 7))))
+    blank_slots = [i for i in range(num_days) if st.session_state.get(slot_key(i, day_part), "--") == "--"]
     if not blank_slots:
         return
-    used_for_part = {st.session_state.get(slot_key(i, day_part), "--") for i in range(7)}
+    used_for_part = {st.session_state.get(slot_key(i, day_part), "--") for i in range(num_days)}
     used_for_part.discard("--")
     unused_candidates = [name for name in candidates if name not in used_for_part]
     pick = random.choice(unused_candidates if unused_candidates else candidates)
@@ -496,7 +507,8 @@ def grocery_items(meals: List[dict], include_standard_weekly: bool = False, stan
 
 def csv_bytes_for_meals(start_day: date, dinner_only: bool = False) -> bytes:
     rows = []
-    for i in range(7):
+    num_days = max(1, min(31, int(st.session_state.get("num_days", 7))))
+    for i in range(num_days):
         day_date = start_day + timedelta(days=i)
         for day_part in DAY_PARTS:
             if dinner_only and day_part != "Dinner":
@@ -537,7 +549,8 @@ def csv_bytes_for_meals(start_day: date, dinner_only: bool = False) -> bytes:
 def weekly_plan_rows(start_day: date) -> List[dict]:
     lookup = meal_lookup()
     rows: List[dict] = []
-    for i in range(7):
+    num_days = max(1, min(31, int(st.session_state.get("num_days", 7))))
+    for i in range(num_days):
         day_date = start_day + timedelta(days=i)
         day_meals = []
         for part in DAY_PARTS:
@@ -861,15 +874,16 @@ def render_meal_form(mode: str, meal: dict | None = None) -> dict:
     if ingredients:
         st.markdown("#### Ingredient Photos")
         for ingredient in ingredients:
-            ingredient_photo_files[ingredient] = st.file_uploader(
-                f"{ingredient}",
-                type=["png", "jpg", "jpeg", "webp"],
-                accept_multiple_files=True,
-                key=f"{prefix}_ingredient_photo_{slugify_for_path(ingredient)}",
-            )
-            existing_paths = meal_media_paths(list((meal.get("ingredient_photos", {}) or {}).get(ingredient, [])))
-            if existing_paths:
-                st.image(existing_paths, width=140)
+            with st.expander(ingredient, expanded=False):
+                ingredient_photo_files[ingredient] = st.file_uploader(
+                    f"{ingredient} Photos",
+                    type=["png", "jpg", "jpeg", "webp"],
+                    accept_multiple_files=True,
+                    key=f"{prefix}_ingredient_photo_{slugify_for_path(ingredient)}",
+                )
+                existing_paths = meal_media_paths(list((meal.get("ingredient_photos", {}) or {}).get(ingredient, [])))
+                if existing_paths:
+                    st.image(existing_paths, width=140)
     else:
         st.caption("Add ingredients above to enable ingredient photo uploads.")
 
@@ -982,6 +996,257 @@ def change_direction_step(delta: int) -> None:
         return
     current = int(st.session_state.get('directions_step_index', 0))
     st.session_state['directions_step_index'] = max(0, min(total - 1, current + delta))
+
+
+def selected_unique_meals() -> List[dict]:
+    unique_meals: List[dict] = []
+    seen_names = set()
+    for meal in selected_meals():
+        meal_name = meal.get("description", "").strip()
+        if not meal_name or meal_name in seen_names:
+            continue
+        seen_names.add(meal_name)
+        unique_meals.append(meal)
+    return unique_meals
+
+
+def normalize_ingredient_name(raw_text: str) -> str:
+    _qty, _unit, name = parse_ingredient_amount_text(raw_text)
+    cleaned = re.sub(r"[^a-zA-Z0-9\s-]", "", (name or raw_text).lower()).strip()
+    return re.sub(r"\s+", " ", cleaned)
+
+
+def selected_unique_meals() -> List[dict]:
+    unique_meals: List[dict] = []
+    seen_names = set()
+    for meal in selected_meals():
+        meal_name = meal.get("description", "").strip()
+        if not meal_name or meal_name in seen_names:
+            continue
+        seen_names.add(meal_name)
+        unique_meals.append(meal)
+    return unique_meals
+
+
+def build_meal_prep_tasks(meals: List[dict]) -> List[dict]:
+    tasks: List[dict] = []
+    for meal in meals:
+        meal_name = meal.get("description", "").strip() or "Meal"
+        steps = parse_direction_steps(meal.get("directions", ""))
+        step_photo_map = meal.get("step_photos", {}) if isinstance(meal.get("step_photos", {}), dict) else {}
+        if not steps:
+            tasks.append({
+                "meal_name": meal_name,
+                "step_number": 1,
+                "text": "No directions added yet.",
+                "photos": [],
+            })
+            continue
+        for step_idx, step_text in enumerate(steps):
+            tasks.append({
+                "meal_name": meal_name,
+                "step_number": step_idx + 1,
+                "text": step_text,
+                "photos": meal_media_paths(list(step_photo_map.get(str(step_idx), []))),
+            })
+    return tasks
+
+
+def meal_prep_summary_rows(meals: List[dict]) -> List[dict]:
+    usage: Dict[str, dict] = {}
+    for meal in meals:
+        meal_name = meal.get("description", "").strip() or "Meal"
+        for ingredient in [item.strip() for item in meal.get("ingredients", []) if item and item.strip()]:
+            key = normalize_ingredient_name(ingredient) or ingredient.lower().strip()
+            if not key:
+                continue
+            entry = usage.setdefault(key, {"ingredient": ingredient, "meals": set(), "count": 0})
+            entry["meals"].add(meal_name)
+            entry["count"] += 1
+    rows = []
+    for entry in sorted(usage.values(), key=lambda item: item["ingredient"].lower()):
+        rows.append({
+            "Ingredient": entry["ingredient"],
+            "Meals Using It": len(entry["meals"]),
+            "Used In": ", ".join(sorted(entry["meals"])),
+        })
+    return rows
+
+
+def open_meal_prep_mode() -> None:
+    st.session_state['meal_prep_mode_active'] = True
+
+
+def close_meal_prep_mode() -> None:
+    st.session_state['meal_prep_mode_active'] = False
+
+
+def render_meal_prep_mode() -> None:
+    meals = selected_unique_meals()
+    if not meals:
+        st.info("Pick some meals in the planner to use meal prep mode.")
+        st.button("Return to planner", on_click=close_meal_prep_mode, use_container_width=True, key="meal_prep_close_empty")
+        return
+
+    st.markdown("<div class='deck-kicker'>Meal prep mode</div><div class='deck-title'>Prep everything for this plan</div>", unsafe_allow_html=True)
+    top_cols = st.columns([1.1, 1.1, 2.4])
+    with top_cols[0]:
+        st.button("Return to planner", on_click=close_meal_prep_mode, use_container_width=True, key="meal_prep_close_top")
+    with top_cols[1]:
+        st.toggle("Mobile friendly mode", key="mobile_friendly_mode")
+    with top_cols[2]:
+        st.caption("Use this view as a single place to prep ingredients, follow every step, and see which meals share ingredients.")
+
+    meal_names = [meal.get("description", "").strip() for meal in meals if meal.get("description", "").strip()]
+    st.markdown("<div class='deck-section-title'>Meals in this prep session</div>", unsafe_allow_html=True)
+    st.markdown("<div class='meal-prep-chip-row'>" + "".join(f"<span class='meal-prep-chip'>{escape(name)}</span>" for name in meal_names) + "</div>", unsafe_allow_html=True)
+
+    summary_rows = meal_prep_summary_rows(meals)
+    st.markdown("<div class='deck-section-title'>Shared ingredients</div>", unsafe_allow_html=True)
+    if summary_rows:
+        st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True)
+    else:
+        st.info("No ingredients found in the selected meals yet.")
+
+    tasks = build_meal_prep_tasks(meals)
+    st.markdown("<div class='deck-section-title'>Prep flow</div>", unsafe_allow_html=True)
+    for task_idx, task in enumerate(tasks):
+        st.markdown("<div class='deck-shell meal-prep-task-shell'>", unsafe_allow_html=True)
+        task_cols = st.columns([1.3, 2.2])
+        with task_cols[0]:
+            st.markdown(f"<div class='meal-prep-step-label'>{escape(task['meal_name'])} · Step {task['step_number']}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='deck-column deck-column-directions meal-prep-step-text'>{escape(task['text'])}</div>", unsafe_allow_html=True)
+        with task_cols[1]:
+            if task['photos']:
+                display_paths = task['photos'][:4]
+                photo_cols = st.columns(min(2, len(display_paths)))
+                for photo_idx, photo_path in enumerate(display_paths):
+                    with photo_cols[photo_idx % len(photo_cols)]:
+                        st.image(photo_path, use_container_width=True)
+            else:
+                st.markdown("<div class='deck-photo-empty'>No step photo yet.</div>", unsafe_allow_html=True)
+        st.checkbox(f"Mark complete: {task['meal_name']} step {task['step_number']}", key=f"meal_prep_done_{task_idx}")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+
+def open_meals_slide_deck() -> None:
+    st.session_state['meals_slide_deck_active'] = True
+    st.session_state['meals_slide_index'] = 0
+
+
+def close_meals_slide_deck() -> None:
+    st.session_state['meals_slide_deck_active'] = False
+    st.session_state['meals_slide_index'] = 0
+
+
+def change_meals_slide(delta: int) -> None:
+    meals = selected_unique_meals()
+    total = len(meals)
+    if total <= 0:
+        st.session_state['meals_slide_index'] = 0
+        return
+    current = int(st.session_state.get('meals_slide_index', 0))
+    st.session_state['meals_slide_index'] = max(0, min(total - 1, current + delta))
+
+
+def render_meals_slide_deck() -> None:
+    meals = selected_unique_meals()
+    if not meals:
+        st.info("Pick some meals in the planner to use the meals slide deck.")
+        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True)
+        return
+
+    slide_index = int(st.session_state.get("meals_slide_index", 0))
+    slide_index = max(0, min(len(meals) - 1, slide_index))
+    st.session_state["meals_slide_index"] = slide_index
+
+    meal = meals[slide_index]
+    meal_name = meal.get("description", "").strip() or "Meal"
+    ingredients = [item.strip() for item in meal.get("ingredients", []) if item and item.strip()]
+    directions = (meal.get("directions", "") or "").strip()
+    steps = parse_direction_steps(directions)
+    meal_photo_paths = meal_media_paths(list(meal.get("meal_photos", [])))
+    step_photo_paths: List[str] = []
+    step_photo_map = meal.get("step_photos", {}) if isinstance(meal.get("step_photos", {}), dict) else {}
+    for step_idx in range(len(steps)):
+        step_photo_paths.extend(meal_media_paths(list(step_photo_map.get(str(step_idx), []))))
+
+    top_nav1, top_nav2, top_nav3, top_nav4 = st.columns([1, 1, 1.2, 3.2])
+    with top_nav1:
+        st.button(
+            "Back",
+            on_click=change_meals_slide,
+            args=(-1,),
+            disabled=(slide_index == 0),
+            use_container_width=True,
+        )
+    with top_nav2:
+        st.button(
+            "Next",
+            on_click=change_meals_slide,
+            args=(1,),
+            disabled=(slide_index >= len(meals) - 1),
+            use_container_width=True,
+        )
+    with top_nav3:
+        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True)
+    with top_nav4:
+        st.markdown(
+            f"<div class='deck-step-chip deck-step-chip-top'>Slide {slide_index + 1} of {len(meals)}</div>",
+            unsafe_allow_html=True,
+        )
+
+    st.markdown(
+        f"<div class='deck-kicker'>Meals slide deck</div><div class='deck-title'>{escape(meal_name)}</div>",
+        unsafe_allow_html=True,
+    )
+
+    top_left, top_right = st.columns([1.05, 1.15])
+    with top_left:
+        st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
+        if ingredients:
+            ingredient_markup = "<ul class='ingredient-list'>" + "".join(
+                f"<li>{escape(item)}</li>" for item in ingredients
+            ) + "</ul>"
+            st.markdown(
+                f"<div class='deck-column'>{ingredient_markup}</div>",
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+
+    with top_right:
+        st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
+        if meal_photo_paths:
+            st.image(meal_photo_paths[0], use_container_width=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No finished meal photo yet.</div>", unsafe_allow_html=True)
+
+    st.markdown("<div class='deck-section-title'>Directions</div>", unsafe_allow_html=True)
+    if directions:
+        if steps:
+            directions_markup = "".join(
+                f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
+                for idx, step in enumerate(steps)
+            )
+        else:
+            directions_markup = escape(directions)
+        st.markdown(
+            f"<div class='deck-column deck-column-directions'>{directions_markup}</div>",
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
+
+    st.markdown("<div class='deck-section-title'>Step photos</div>", unsafe_allow_html=True)
+    if step_photo_paths:
+        display_paths = step_photo_paths[:8]
+        step_cols = st.columns(min(4, len(display_paths)))
+        for idx, photo_path in enumerate(display_paths):
+            with step_cols[idx % len(step_cols)]:
+                st.image(photo_path, use_container_width=True)
+    else:
+        st.markdown("<div class='deck-photo-empty'>No step photos yet.</div>", unsafe_allow_html=True)
 
 def render_directions_deck(meal_name: str) -> None:
     meal = meal_lookup().get(meal_name, {})
@@ -1317,6 +1582,138 @@ def change_direction_step(delta: int) -> None:
     st.session_state['directions_step_index'] = max(0, min(total - 1, current + delta))
 
 
+def selected_unique_meals() -> List[dict]:
+    unique_meals: List[dict] = []
+    seen_names = set()
+    for meal in selected_meals():
+        meal_name = meal.get("description", "").strip()
+        if not meal_name or meal_name in seen_names:
+            continue
+        seen_names.add(meal_name)
+        unique_meals.append(meal)
+    return unique_meals
+
+
+def open_meals_slide_deck() -> None:
+    st.session_state['meals_slide_deck_active'] = True
+    st.session_state['meals_slide_index'] = 0
+
+
+def close_meals_slide_deck() -> None:
+    st.session_state['meals_slide_deck_active'] = False
+    st.session_state['meals_slide_index'] = 0
+
+
+def change_meals_slide(delta: int) -> None:
+    meals = selected_unique_meals()
+    total = len(meals)
+    if total <= 0:
+        st.session_state['meals_slide_index'] = 0
+        return
+    current = int(st.session_state.get('meals_slide_index', 0))
+    st.session_state['meals_slide_index'] = max(0, min(total - 1, current + delta))
+
+
+def render_meals_slide_deck() -> None:
+    meals = selected_unique_meals()
+    if not meals:
+        st.info("Pick some meals in the planner to use the meals slide deck.")
+        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True)
+        return
+
+    slide_index = int(st.session_state.get("meals_slide_index", 0))
+    slide_index = max(0, min(len(meals) - 1, slide_index))
+    st.session_state["meals_slide_index"] = slide_index
+
+    meal = meals[slide_index]
+    meal_name = meal.get("description", "").strip() or "Meal"
+    ingredients = [item.strip() for item in meal.get("ingredients", []) if item and item.strip()]
+    directions = (meal.get("directions", "") or "").strip()
+    steps = parse_direction_steps(directions)
+    meal_photo_paths = meal_media_paths(list(meal.get("meal_photos", [])))
+    step_photo_paths: List[str] = []
+    step_photo_map = meal.get("step_photos", {}) if isinstance(meal.get("step_photos", {}), dict) else {}
+    for step_idx in range(len(steps)):
+        step_photo_paths.extend(meal_media_paths(list(step_photo_map.get(str(step_idx), []))))
+
+    top_nav1, top_nav2, top_nav3, top_nav4 = st.columns([1, 1, 1.2, 3.2])
+    with top_nav1:
+        st.button(
+            "Back",
+            on_click=change_meals_slide,
+            args=(-1,),
+            disabled=(slide_index == 0),
+            use_container_width=True,
+        )
+    with top_nav2:
+        st.button(
+            "Next",
+            on_click=change_meals_slide,
+            args=(1,),
+            disabled=(slide_index >= len(meals) - 1),
+            use_container_width=True,
+        )
+    with top_nav3:
+        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True)
+    with top_nav4:
+        st.markdown(
+            f"<div class='deck-step-chip deck-step-chip-top'>Slide {slide_index + 1} of {len(meals)}</div>",
+            unsafe_allow_html=True,
+        )
+
+    st.markdown(
+        f"<div class='deck-kicker'>Meals slide deck</div><div class='deck-title'>{escape(meal_name)}</div>",
+        unsafe_allow_html=True,
+    )
+
+    top_left, top_right = st.columns([1.05, 1.15])
+    with top_left:
+        st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
+        if ingredients:
+            ingredient_markup = "<ul class='ingredient-list'>" + "".join(
+                f"<li>{escape(item)}</li>" for item in ingredients
+            ) + "</ul>"
+            st.markdown(
+                f"<div class='deck-column'>{ingredient_markup}</div>",
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+
+    with top_right:
+        st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
+        if meal_photo_paths:
+            st.image(meal_photo_paths[0], use_container_width=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No finished meal photo yet.</div>", unsafe_allow_html=True)
+
+    st.markdown("<div class='deck-section-title'>Directions</div>", unsafe_allow_html=True)
+    if directions:
+        if steps:
+            directions_markup = "".join(
+                f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
+                for idx, step in enumerate(steps)
+            )
+        else:
+            directions_markup = escape(directions)
+        st.markdown(
+            f"<div class='deck-column deck-column-directions'>{directions_markup}</div>",
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
+
+    st.markdown("<div class='deck-section-title'>Step photos</div>", unsafe_allow_html=True)
+    if step_photo_paths:
+        display_paths = step_photo_paths[:8]
+        step_cols = st.columns(min(4, len(display_paths)))
+        for idx, photo_path in enumerate(display_paths):
+            with step_cols[idx % len(step_cols)]:
+                st.image(photo_path, use_container_width=True)
+    else:
+        st.markdown("<div class='deck-photo-empty'>No step photos yet.</div>", unsafe_allow_html=True)
+
+
 def render_directions_deck(meal_name: str) -> None:
     meal = meal_lookup().get(meal_name, {})
     if not meal:
@@ -1409,6 +1806,177 @@ def render_directions_deck(meal_name: str) -> None:
 
     st.markdown("</div>", unsafe_allow_html=True)
 
+
+
+def _parse_number_token(token: str) -> float | None:
+    token = (token or '').strip()
+    if not token:
+        return None
+    try:
+        return float(token)
+    except Exception:
+        pass
+
+    if ' ' in token:
+        parts = [part for part in token.split() if part]
+        if len(parts) == 2 and '/' in parts[1]:
+            whole = _parse_number_token(parts[0])
+            frac = _parse_number_token(parts[1])
+            if whole is not None and frac is not None:
+                return whole + frac
+    if '/' in token:
+        try:
+            numerator, denominator = token.split('/', 1)
+            return float(numerator) / float(denominator)
+        except Exception:
+            return None
+    return None
+
+
+def parse_ingredient_amount_text(raw_text: str) -> tuple[float, str, str]:
+    text = (raw_text or '').strip()
+    if not text:
+        return 1.0, '', ''
+
+    parts = text.split()
+    qty = 1.0
+    unit = ''
+    name = text
+
+    consumed = 0
+    qty_parts: List[str] = []
+    for token in parts[:2]:
+        parsed = _parse_number_token(token)
+        if parsed is None:
+            break
+        qty_parts.append(token)
+        consumed += 1
+    if qty_parts:
+        parsed_qty = _parse_number_token(' '.join(qty_parts))
+        if parsed_qty is not None:
+            qty = parsed_qty
+            remainder = parts[consumed:]
+            if remainder:
+                unit_candidates = {
+                    'tsp', 'tbsp', 'cup', 'cups', 'oz', 'lb', 'lbs', 'g', 'kg', 'ml', 'l',
+                    'clove', 'cloves', 'can', 'cans', 'package', 'packages', 'slice', 'slices',
+                    'piece', 'pieces', 'bunch', 'bunches', 'pinch', 'dash', 'quart', 'quarts',
+                    'pint', 'pints', 'gram', 'grams', 'teaspoon', 'teaspoons', 'tablespoon',
+                    'tablespoons'
+                }
+                first_remainder = remainder[0].lower().rstrip('.,')
+                if first_remainder in unit_candidates:
+                    unit = remainder[0]
+                    remainder = remainder[1:]
+                name = ' '.join(remainder).strip() or text
+            else:
+                name = text
+    return qty, unit, name
+
+
+def format_scaled_quantity(value: float) -> str:
+    if abs(value - round(value)) < 1e-9:
+        return str(int(round(value)))
+    if value < 10:
+        rounded_quarter = round(value * 4) / 4
+        if abs(value - rounded_quarter) < 1e-9:
+            whole = int(rounded_quarter)
+            frac = rounded_quarter - whole
+            frac_map = {0.25: '1/4', 0.5: '1/2', 0.75: '3/4'}
+            if frac == 0:
+                return str(whole)
+            frac_text = frac_map.get(round(frac, 2), f'{rounded_quarter:.2f}'.rstrip('0').rstrip('.'))
+            return f'{whole} {frac_text}'.strip() if whole else frac_text
+    return f'{value:.2f}'.rstrip('0').rstrip('.')
+
+
+def render_meal_multiplier_tab() -> None:
+    meals = sorted([meal.get('description', '') for meal in load_meals() if meal.get('description')], key=str.lower)
+    if not meals:
+        st.info('Add at least one meal in the Meal Library to use the meal multiplier.')
+        return
+
+    top_left, top_right = st.columns([1.4, 1])
+    with top_left:
+        selected_meal_name = st.selectbox('Choose a meal', meals, key='multiplier_meal_name')
+    with top_right:
+        total_meals = st.number_input('Total number of meals to plan', min_value=1.0, step=1.0, value=float(st.session_state.get('multiplier_total_meals', 1.0)), key='multiplier_total_meals')
+
+    selected_meal = meal_lookup().get(selected_meal_name, {})
+    base_ingredients = [item.strip() for item in selected_meal.get('ingredients', []) if item and item.strip()]
+
+    st.caption('Enter the amount needed for one meal. The app will multiply it by the total meal count.')
+
+    multiplier_rows: List[dict] = []
+    if base_ingredients:
+        st.markdown('### Meal ingredients')
+        for idx, ingredient in enumerate(base_ingredients):
+            guessed_qty, guessed_unit, guessed_name = parse_ingredient_amount_text(ingredient)
+            row_cols = st.columns([2.2, 1, 1.1, 1.4])
+            with row_cols[0]:
+                item_name = st.text_input('Ingredient', value=guessed_name or ingredient, key=f'multiplier_name_{idx}')
+            with row_cols[1]:
+                qty = st.number_input('Qty per meal', min_value=0.0, step=0.25, value=float(st.session_state.get(f'multiplier_qty_{idx}', guessed_qty)), key=f'multiplier_qty_{idx}')
+            with row_cols[2]:
+                unit = st.text_input('Unit', value=st.session_state.get(f'multiplier_unit_{idx}', guessed_unit), key=f'multiplier_unit_{idx}')
+            with row_cols[3]:
+                scaled_qty = qty * float(total_meals)
+                display_value = f"{format_scaled_quantity(scaled_qty)} {unit}".strip()
+                st.text_input('Scaled total', value=display_value, disabled=True, key=f'multiplier_total_{idx}')
+            multiplier_rows.append({'name': item_name.strip(), 'qty': float(qty), 'unit': unit.strip()})
+    else:
+        st.info('This meal does not have any ingredients yet.')
+
+    st.markdown('### Additional ingredients')
+    st.caption("Add ingredients here that are not on the meal's main ingredient list.")
+    extra_count = int(st.number_input('Number of additional ingredients', min_value=0, max_value=20, step=1, value=int(st.session_state.get('multiplier_extra_count', 0)), key='multiplier_extra_count'))
+
+    for extra_idx in range(extra_count):
+        row_cols = st.columns([2.2, 1, 1.1, 1.4])
+        with row_cols[0]:
+            extra_name = st.text_input('Ingredient', key=f'multiplier_extra_name_{extra_idx}', placeholder='Extra ingredient')
+        with row_cols[1]:
+            extra_qty = st.number_input('Qty per meal', min_value=0.0, step=0.25, value=float(st.session_state.get(f'multiplier_extra_qty_{extra_idx}', 0.0)), key=f'multiplier_extra_qty_{extra_idx}')
+        with row_cols[2]:
+            extra_unit = st.text_input('Unit', key=f'multiplier_extra_unit_{extra_idx}', placeholder='cup, lb, can')
+        with row_cols[3]:
+            extra_total = extra_qty * float(total_meals)
+            display_value = f"{format_scaled_quantity(extra_total)} {extra_unit}".strip()
+            st.text_input('Scaled total', value=display_value, disabled=True, key=f'multiplier_extra_total_{extra_idx}')
+        if extra_name.strip():
+            multiplier_rows.append({'name': extra_name.strip(), 'qty': float(extra_qty), 'unit': extra_unit.strip()})
+
+    aggregated: dict[tuple[str, str], float] = {}
+    for row in multiplier_rows:
+        name = row.get('name', '').strip()
+        qty = float(row.get('qty', 0.0) or 0.0)
+        unit = row.get('unit', '').strip()
+        if not name or qty <= 0:
+            continue
+        key = (name.lower(), unit.lower())
+        aggregated[key] = aggregated.get(key, 0.0) + (qty * float(total_meals))
+
+    st.markdown('### Scaled ingredient list')
+    if not aggregated:
+        st.info('Enter at least one ingredient amount to generate the scaled list.')
+        return
+
+    output_rows = []
+    for (name_key, unit_key), total_qty in sorted(aggregated.items(), key=lambda item: item[0][0]):
+        display_name = next((row['name'] for row in multiplier_rows if row.get('name', '').strip().lower() == name_key), name_key.title())
+        display_unit = next((row['unit'] for row in multiplier_rows if row.get('name', '').strip().lower() == name_key and row.get('unit', '').strip().lower() == unit_key), unit_key)
+        output_rows.append({
+            'Ingredient': display_name,
+            'Unit': display_unit,
+            'Total Quantity': format_scaled_quantity(total_qty),
+            'Scaled Amount': f"{format_scaled_quantity(total_qty)} {display_unit}".strip(),
+        })
+
+    st.dataframe(pd.DataFrame(output_rows), use_container_width=True, hide_index=True)
+    csv_bytes = pd.DataFrame(output_rows).to_csv(index=False).encode('utf-8')
+    st.download_button('Download scaled ingredient list (.csv)', csv_bytes, file_name='scaled_ingredient_list.csv', mime='text/csv', use_container_width=True)
+
+
 st.set_page_config(page_title="JDs Crazy Meal Planner", page_icon="🍽️", layout="wide")
 
 st.markdown(
@@ -1449,6 +2017,21 @@ st.markdown(
       .deck-ingredient-tile { border: 1px solid rgba(148,163,184,0.16); border-radius: 12px; padding: 0.3rem; margin-bottom: 0.45rem; }
       .deck-ingredient-photo-empty { width: 100%; aspect-ratio: 1 / 1; border: 1px dashed rgba(148,163,184,0.22); border-radius: 10px; background: rgba(255,255,255,0.02); }
       .deck-photo-empty { border: 1px dashed rgba(148,163,184,0.32); border-radius: 12px; min-height: 108px; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-style: italic; padding: 0.6rem; text-align:center; }
+      .meal-prep-chip-row { display:flex; flex-wrap:wrap; gap:0.45rem; margin-bottom:0.8rem; }
+      .meal-prep-chip { display:inline-block; padding:0.38rem 0.78rem; border-radius:999px; background:rgba(148,163,184,0.16); border:1px solid rgba(148,163,184,0.22); font-weight:700; }
+      .meal-prep-task-shell { margin-bottom:0.85rem; }
+      .meal-prep-step-label { font-size:0.82rem; text-transform:uppercase; letter-spacing:0.06em; color:#94a3b8; font-weight:700; margin-bottom:0.45rem; }
+      .meal-prep-step-text { min-height: 90px; }
+      .mobile-day-card { border: 1px solid rgba(148,163,184,0.18); border-radius: 16px; padding: 0.75rem; margin-bottom: 0.8rem; background: rgba(255,255,255,0.02); }
+      .mobile-day-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.15rem; }
+      .mobile-day-date { color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.65rem; }
+      .mobile-control-stack .stButton > button, .mobile-control-stack div[data-testid="stDownloadButton"] > button { min-height: 3rem; font-size: 1rem; }
+      .mobile-mode-note { color:#94a3b8; margin-bottom:0.5rem; }
+      @media (max-width: 900px) {
+        .block-container { padding-top: 0.8rem; }
+        .ingredient-tiles { grid-template-columns: 1fr; }
+        .deck-title { font-size: 1.2rem; }
+      }
     </style>
     """,
     unsafe_allow_html=True,
@@ -1463,18 +2046,71 @@ st.session_state.setdefault("show_edit_meal", False)
 st.session_state.setdefault("directions_view_active", False)
 st.session_state.setdefault("directions_meal_name", "")
 st.session_state.setdefault("directions_step_index", 0)
+st.session_state.setdefault("meals_slide_deck_active", False)
+st.session_state.setdefault("meals_slide_index", 0)
 st.session_state.setdefault("meal_filter_preference", [])
 st.session_state.setdefault("meal_filter_time", [])
 st.session_state.setdefault("meal_filter_cost", [])
 st.session_state.setdefault("meal_filter_fill", [])
+st.session_state.setdefault("num_days", 7)
 st.session_state.setdefault("safe_close_requested", False)
+st.session_state.setdefault("mobile_friendly_mode", False)
+st.session_state.setdefault("meal_prep_mode_active", False)
 
-st.title("Meal Selector")
+st.title("The Ultimate Meal Planner")
 
-selector_tab, library_tab = st.tabs(["Meal Selector", "Meal Library"])
+selector_tab, library_tab, multiplier_tab = st.tabs(["Meal Planner", "Meal Library", "Meal Multiplier"])
+
+
+def render_planner_grid(start_day: date, num_days: int, option_map: Dict[str, List[str]]) -> None:
+    header_cols = st.columns([0.9] + [1] * num_days)
+    with header_cols[0]:
+        st.markdown('<div class="meal-grid-spacer"></div>', unsafe_allow_html=True)
+    for i in range(num_days):
+        current_day = start_day + timedelta(days=i)
+        with header_cols[i + 1]:
+            st.markdown(f'<div class="day-header">{current_day.strftime("%A")}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="date-header">{current_day.strftime("%m/%d/%Y")}</div>', unsafe_allow_html=True)
+
+    for part in DAY_PARTS:
+        row_cols = st.columns([0.9] + [1] * num_days)
+        with row_cols[0]:
+            st.markdown(f'<div class="row-label">{part}</div>', unsafe_allow_html=True)
+        for i in range(num_days):
+            key = slot_key(i, part)
+            options = option_map[part]
+            current_value = st.session_state.get(key, "--")
+            if current_value not in options:
+                st.session_state[key] = "--"
+                current_value = "--"
+            with row_cols[i + 1]:
+                st.selectbox(part, options, index=options.index(current_value), key=key, label_visibility="collapsed")
+
+
+def render_mobile_planner(start_day: date, num_days: int, option_map: Dict[str, List[str]]) -> None:
+    st.markdown("<div class='mobile-mode-note'>Mobile mode uses one simple card per day with larger controls.</div>", unsafe_allow_html=True)
+    for i in range(num_days):
+        current_day = start_day + timedelta(days=i)
+        st.markdown("<div class='mobile-day-card'>", unsafe_allow_html=True)
+        st.markdown(f"<div class='mobile-day-title'>{current_day.strftime('%A')}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='mobile-day-date'>{current_day.strftime('%B %d, %Y')}</div>", unsafe_allow_html=True)
+        for part in DAY_PARTS:
+            key = slot_key(i, part)
+            options = option_map[part]
+            current_value = st.session_state.get(key, "--")
+            if current_value not in options:
+                st.session_state[key] = "--"
+                current_value = "--"
+            st.selectbox(part, options, index=options.index(current_value), key=key, label_visibility="visible")
+        st.markdown("</div>", unsafe_allow_html=True)
+
 
 with selector_tab:
-    if st.session_state.get("directions_view_active", False):
+    if st.session_state.get("meal_prep_mode_active", False):
+        render_meal_prep_mode()
+    elif st.session_state.get("meals_slide_deck_active", False):
+        render_meals_slide_deck()
+    elif st.session_state.get("directions_view_active", False):
         render_directions_deck(str(st.session_state.get("directions_meal_name", "")))
     else:
         prefs: List[str] = list(st.session_state.get("meal_filter_preference", []))
@@ -1483,37 +2119,24 @@ with selector_tab:
         fills: List[str] = list(st.session_state.get("meal_filter_fill", []))
 
         offset_days = int(st.session_state.get("offset_days", 0))
+        num_days = max(1, min(31, int(st.session_state.get("num_days", 7))))
         start_day = date.today() + timedelta(days=offset_days)
 
         breakfast_options = meal_options("Breakfast", prefs, times, costs, fills)
         lunch_options = meal_options("Lunch", prefs, times, costs, fills)
         dinner_options = meal_options("Dinner", prefs, times, costs, fills)
 
-        st.caption(f"Week starts {start_day.strftime('%A, %b %d, %Y')}.")
-
-        header_cols = st.columns([0.9] + [1] * 7)
-        with header_cols[0]:
-            st.markdown('<div class="meal-grid-spacer"></div>', unsafe_allow_html=True)
-        for i in range(7):
-            current_day = start_day + timedelta(days=i)
-            with header_cols[i + 1]:
-                st.markdown(f'<div class="day-header">{current_day.strftime("%A")}</div>', unsafe_allow_html=True)
-                st.markdown(f'<div class="date-header">{current_day.strftime("%m/%d/%Y")}</div>', unsafe_allow_html=True)
+        top_mode_cols = st.columns([1.2, 2.4])
+        with top_mode_cols[0]:
+            st.toggle("Mobile friendly mode", key="mobile_friendly_mode")
+        with top_mode_cols[1]:
+            st.caption(f"Week starts {start_day.strftime('%A, %b %d, %Y')}.")
 
         option_map = {"Breakfast": breakfast_options, "Lunch": lunch_options, "Dinner": dinner_options}
-        for part in DAY_PARTS:
-            row_cols = st.columns([0.9] + [1] * 7)
-            with row_cols[0]:
-                st.markdown(f'<div class="row-label">{part}</div>', unsafe_allow_html=True)
-            for i in range(7):
-                key = slot_key(i, part)
-                options = option_map[part]
-                current_value = st.session_state.get(key, "--")
-                if current_value not in options:
-                    st.session_state[key] = "--"
-                    current_value = "--"
-                with row_cols[i + 1]:
-                    st.selectbox(part, options, index=options.index(current_value), key=key, label_visibility="collapsed")
+        if st.session_state.get("mobile_friendly_mode", False):
+            render_mobile_planner(start_day, num_days, option_map)
+        else:
+            render_planner_grid(start_day, num_days, option_map)
 
         st.divider()
         random_col1, random_col2, random_col3 = st.columns(3)
@@ -1531,9 +2154,14 @@ with selector_tab:
             f3.multiselect("Cost", unique_values("cost"), key="meal_filter_cost")
             f4.multiselect("Fill", unique_values("fill"), key="meal_filter_fill")
 
-        controls1, controls2, controls3, controls4 = st.columns([1, 1, 1, 1])
+        control_gap_open = "<div class='mobile-control-stack'>" if st.session_state.get("mobile_friendly_mode", False) else ""
+        control_gap_close = "</div>" if st.session_state.get("mobile_friendly_mode", False) else ""
+        st.markdown(control_gap_open, unsafe_allow_html=True)
+        controls1, controls1b, controls2, controls3, controls4 = st.columns([1, 1, 1, 1, 1])
         with controls1:
             st.number_input("Offset (days)", min_value=0, max_value=365, step=1, key="offset_days")
+        with controls1b:
+            st.number_input("Number of days", min_value=1, max_value=31, step=1, key="num_days")
         with controls2:
             st.write("")
             st.button("Clear week", use_container_width=True, on_click=clear_schedule)
@@ -1545,6 +2173,7 @@ with selector_tab:
         with controls4:
             st.write("")
             st.button("Safe close down", use_container_width=True, on_click=safe_close_down)
+        st.markdown(control_gap_close, unsafe_allow_html=True)
 
         if st.session_state.get("safe_close_requested", False):
             st.success("Meals and weekly settings were saved. You can now close this browser tab and stop the Streamlit app from your terminal.")
@@ -1640,6 +2269,15 @@ with selector_tab:
             tile_html.append("</div>")
             st.markdown("".join(tile_html), unsafe_allow_html=True)
 
+            st.subheader("Meal Slides")
+            st.button("Open meals slide deck", key="open_meals_slide_deck", use_container_width=True, on_click=open_meals_slide_deck)
+
+            deck_action_cols = st.columns(2)
+            with deck_action_cols[0]:
+                st.button("Open meals slide deck", use_container_width=True, on_click=open_meals_slide_deck, key="open_meals_slide_deck_button")
+            with deck_action_cols[1]:
+                st.button("Open meal prep mode", use_container_width=True, on_click=open_meal_prep_mode, key="open_meal_prep_mode_button")
+
             st.subheader("Directions Slides")
             if not direction_meal_names:
                 st.info("Add directions to a meal in the Meal Library to use the slide deck view.")
@@ -1648,6 +2286,10 @@ with selector_tab:
                 for idx, meal_name in enumerate(direction_meal_names):
                     with button_cols[idx % len(button_cols)]:
                         st.button(meal_name, key=f"open_directions_{meal_name}", use_container_width=True, on_click=open_directions_deck, args=(meal_name,))
+
+with multiplier_tab:
+    render_meal_multiplier_tab()
+
 with library_tab:
     action_col1, action_col2, action_col3 = st.columns(3)
     with action_col1:
@@ -1671,9 +2313,9 @@ with library_tab:
                     st.rerun()
                 else:
                     st.warning(msg)
-
-    with st.expander("Add custom column", expanded=False):
-        new_column_name = st.text_input("New column name", placeholder="Spice level")
+    if not st.session_state.show_add_meal and not st.session_state.show_edit_meal:
+        with st.expander("Add custom column", expanded=False):
+            new_column_name = st.text_input("New column name", placeholder="Spice level")
         st.caption("Examples: spice, meat type, vegan, prep time.")
         if st.button("Add column to meal library", use_container_width=True):
             ok, msg = add_custom_column(new_column_name)
@@ -1732,18 +2374,18 @@ with library_tab:
                 if st.button("Cancel Edit", use_container_width=True):
                     st.session_state.show_edit_meal = False
                     st.rerun()
+    if not st.session_state.show_add_meal and not st.session_state.show_edit_meal:
+        search = st.text_input("Search meals")
+        table = meal_table().copy()
+        if search:
+            needle = search.lower().strip()
+            table = table[table.apply(lambda row: any(needle in str(value).lower() for value in row), axis=1)]
 
-    search = st.text_input("Search meals")
-    table = meal_table().copy()
-    if search:
-        needle = search.lower().strip()
-        table = table[table.apply(lambda row: any(needle in str(value).lower() for value in row), axis=1)]
-
-    st.dataframe(
-        table.style.set_properties(**{"white-space": "normal", "word-break": "break-word"}),
-        use_container_width=True,
-        hide_index=True,
-        height=560,
-    )
-    st.caption(f"{len(table)} meals in view")
+        st.dataframe(
+            table.style.set_properties(**{"white-space": "normal", "word-break": "break-word"}),
+            use_container_width=True,
+            hide_index=True,
+            height=560,
+        )
+        st.caption(f"{len(table)} meals in view")
 
