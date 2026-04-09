@@ -1113,7 +1113,7 @@ def render_meal_prep_mode() -> None:
     with top_cols[0]:
         st.button("Return to planner", on_click=close_meal_prep_mode, use_container_width=True, key="meal_prep_close_top")
     with top_cols[1]:
-        st.toggle("Mobile friendly mode", key="mobile_friendly_mode")
+        st.toggle("Mobile friendly mode", key="mobile_mode_planner")
     with top_cols[2]:
         st.caption("Use this view as a single place to prep ingredients, follow every step, and see which meals share ingredients.")
 
@@ -1152,15 +1152,21 @@ def render_meal_prep_mode() -> None:
 def open_meals_slide_deck() -> None:
     st.session_state['meals_slide_deck_active'] = True
     st.session_state['meals_slide_index'] = 0
+    st.session_state['meals_slide_names_snapshot'] = [
+        meal.get("description", "").strip()
+        for meal in selected_unique_meals()
+        if meal.get("description", "").strip()
+    ]
 
 
 def close_meals_slide_deck() -> None:
     st.session_state['meals_slide_deck_active'] = False
     st.session_state['meals_slide_index'] = 0
+    st.session_state['meals_slide_names_snapshot'] = []
 
 
 def change_meals_slide(delta: int) -> None:
-    meals = selected_unique_meals()
+    meals = get_meals_slide_snapshot()
     total = len(meals)
     if total <= 0:
         st.session_state['meals_slide_index'] = 0
@@ -1191,9 +1197,7 @@ def render_meals_slide_deck() -> None:
     for step_idx in range(len(steps)):
         step_photo_paths.extend(meal_media_paths(list(step_photo_map.get(str(step_idx), []))))
 
-    mobile_mode = bool(st.session_state.get("mobile_friendly_mode", False))
-
-    top_nav1, top_nav2, top_nav3, top_nav4 = st.columns([1, 1, 1.2, 3.2])
+    top_nav1, top_nav2, top_nav3, top_nav4, top_nav5 = st.columns([1, 1, 1.2, 1.4, 2.2])
     with top_nav1:
         st.button(
             "Back",
@@ -1201,6 +1205,7 @@ def render_meals_slide_deck() -> None:
             args=(-1,),
             disabled=(slide_index == 0),
             use_container_width=True,
+            key='meals_deck_back'
         )
     with top_nav2:
         st.button(
@@ -1209,15 +1214,19 @@ def render_meals_slide_deck() -> None:
             args=(1,),
             disabled=(slide_index >= len(meals) - 1),
             use_container_width=True,
+            key='meals_deck_next'
         )
     with top_nav3:
-        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True)
+        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True, key='meals_deck_close')
     with top_nav4:
+        st.toggle('Mobile friendly mode', key='mobile_mode_meals_deck')
+    with top_nav5:
         st.markdown(
             f"<div class='deck-step-chip deck-step-chip-top'>Slide {slide_index + 1} of {len(meals)}</div>",
             unsafe_allow_html=True,
         )
 
+    mobile_mode = bool(st.session_state.get('mobile_mode_meals_deck', False))
     st.markdown(
         f"<div class='deck-kicker'>Meals slide deck</div><div class='deck-title'>{escape(meal_name)}</div>",
         unsafe_allow_html=True,
@@ -1248,162 +1257,161 @@ def render_meals_slide_deck() -> None:
                 )
             else:
                 directions_markup = escape(directions)
+            st.markdown(f"<div class='deck-column deck-column-directions'>{directions_markup}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
+    else:
+        top_left, top_right = st.columns([1.05, 1.15])
+        with top_left:
+            st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
+            if ingredients:
+                ingredient_markup = "<ul class='ingredient-list'>" + "".join(
+                    f"<li>{escape(item)}</li>" for item in ingredients
+                ) + "</ul>"
+                st.markdown(
+                    f"<div class='deck-column'>{ingredient_markup}</div>",
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+
+        with top_right:
+            st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
+            if meal_photo_paths:
+                st.image(meal_photo_paths[0], use_container_width=True)
+            else:
+                st.markdown("<div class='deck-photo-empty'>No finished meal photo yet.</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='deck-section-title'>Directions</div>", unsafe_allow_html=True)
+        if directions:
+            if steps:
+                directions_markup = "".join(
+                    f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
+                    for idx, step in enumerate(steps)
+                )
+            else:
+                directions_markup = escape(directions)
             st.markdown(
                 f"<div class='deck-column deck-column-directions'>{directions_markup}</div>",
                 unsafe_allow_html=True,
             )
         else:
             st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
-        return
 
-    top_left, top_right = st.columns([1.05, 1.15])
-    with top_left:
-        st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
-        if ingredients:
-            ingredient_markup = "<ul class='ingredient-list'>" + "".join(
-                f"<li>{escape(item)}</li>" for item in ingredients
-            ) + "</ul>"
-            st.markdown(
-                f"<div class='deck-column'>{ingredient_markup}</div>",
-                unsafe_allow_html=True,
-            )
+        st.markdown("<div class='deck-section-title'>Step photos</div>", unsafe_allow_html=True)
+        if step_photo_paths:
+            display_paths = step_photo_paths[:8]
+            step_cols = st.columns(min(4, len(display_paths)))
+            for idx, photo_path in enumerate(display_paths):
+                with step_cols[idx % len(step_cols)]:
+                    st.image(photo_path, use_container_width=True)
         else:
-            st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+            st.markdown("<div class='deck-photo-empty'>No step photos yet.</div>", unsafe_allow_html=True)
 
-    with top_right:
-        st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
-        if meal_photo_paths:
-            st.image(meal_photo_paths[0], use_container_width=True)
-        else:
-            st.markdown("<div class='deck-photo-empty'>No finished meal photo yet.</div>", unsafe_allow_html=True)
-
-    st.markdown("<div class='deck-section-title'>Directions</div>", unsafe_allow_html=True)
-    if directions:
-        if steps:
-            directions_markup = "".join(
-                f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
-                for idx, step in enumerate(steps)
-            )
-        else:
-            directions_markup = escape(directions)
-        st.markdown(
-            f"<div class='deck-column deck-column-directions'>{directions_markup}</div>",
-            unsafe_allow_html=True,
-        )
-    else:
-        st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
-
-    st.markdown("<div class='deck-section-title'>Step photos</div>", unsafe_allow_html=True)
-    if step_photo_paths:
-        display_paths = step_photo_paths[:8]
-        step_cols = st.columns(min(4, len(display_paths)))
-        for idx, photo_path in enumerate(display_paths):
-            with step_cols[idx % len(step_cols)]:
-                st.image(photo_path, use_container_width=True)
-    else:
-        st.markdown("<div class='deck-photo-empty'>No step photos yet.</div>", unsafe_allow_html=True)
 
 def render_directions_deck(meal_name: str) -> None:
     meal = meal_lookup().get(meal_name, {})
     if not meal:
-        st.warning('That meal could not be found.')
-        st.button('Return to home', on_click=close_directions_deck, use_container_width=True)
+        st.warning("That meal could not be found.")
+        st.button("Return to home", on_click=close_directions_deck, use_container_width=True)
         return
 
-    steps = parse_direction_steps(meal.get('directions', ''))
-    ingredients = [item.strip() for item in meal.get('ingredients', []) if item and item.strip()]
-    meal_photo_paths = meal_media_paths(list(meal.get('meal_photos', [])))
+    steps = parse_direction_steps(meal.get("directions", ""))
+    ingredients = [item.strip() for item in meal.get("ingredients", []) if item and item.strip()]
+    meal_photo_paths = meal_media_paths(list(meal.get("meal_photos", [])))
     has_cover = bool(meal_photo_paths)
     total_slides = len(steps) + (1 if has_cover else 0)
+
     if total_slides <= 0:
-        st.warning('This meal does not have any directions or meal photos yet.')
-        st.button('Return to home', on_click=close_directions_deck, use_container_width=True)
+        st.warning("This meal does not have any directions or meal photos yet.")
+        st.button("Return to home", on_click=close_directions_deck, use_container_width=True)
         return
 
-    slide_index = int(st.session_state.get('directions_step_index', 0))
+    slide_index = int(st.session_state.get("directions_step_index", 0))
     slide_index = max(0, min(total_slides - 1, slide_index))
-    st.session_state['directions_step_index'] = slide_index
+    st.session_state["directions_step_index"] = slide_index
 
-    header_left, header_right = st.columns([4, 1])
-    with header_left:
-        st.markdown(f"<div class='deck-kicker'>Directions deck</div><div class='deck-title'>{escape(meal_name)}</div>", unsafe_allow_html=True)
-    with header_right:
-        st.markdown(f"<div class='deck-step-chip'>Slide {slide_index + 1} of {total_slides}</div>", unsafe_allow_html=True)
+    top_nav1, top_nav2, top_nav3, top_nav4, top_nav5 = st.columns([1, 1, 1.15, 1.4, 2.1])
+    with top_nav1:
+        st.button("Back", on_click=change_direction_step, args=(-1,), disabled=(slide_index == 0), use_container_width=True, key='directions_deck_back')
+    with top_nav2:
+        st.button("Next", on_click=change_direction_step, args=(1,), disabled=(slide_index >= total_slides - 1), use_container_width=True, key='directions_deck_next')
+    with top_nav3:
+        st.button("Return to home", on_click=close_directions_deck, use_container_width=True, key='directions_deck_close')
+    with top_nav4:
+        st.toggle('Mobile friendly mode', key='mobile_mode_directions_deck')
+    with top_nav5:
+        st.markdown(
+            f"<div class='deck-step-chip deck-step-chip-top'>Slide {slide_index + 1} of {total_slides}</div>",
+            unsafe_allow_html=True,
+        )
+
+    mobile_mode = bool(st.session_state.get('mobile_mode_directions_deck', False))
+    st.markdown(
+        f"<div class='deck-kicker'>Directions deck</div><div class='deck-title'>{escape(meal_name)}</div>",
+        unsafe_allow_html=True,
+    )
 
     if has_cover and slide_index == 0:
-        st.markdown("<div class='deck-shell'><div class='deck-section-title'>Finished meal photo</div></div>", unsafe_allow_html=True)
-
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.image(meal_photo_paths[0], width=500)
-
-        nav1, nav2, nav3 = st.columns([1, 1, 1])
-        with nav1:
-            st.button('Back', disabled=True, use_container_width=True)
-        with nav2:
-            st.button('Next', on_click=change_direction_step, args=(1,), use_container_width=True)
-        with nav3:
-            st.button('Return to home', on_click=close_directions_deck, use_container_width=True)
+        if mobile_mode:
+            st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
+            st.image(meal_photo_paths[0], use_container_width=True)
+        else:
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.image(meal_photo_paths[0], width=500)
         return
 
     step_index = slide_index - 1 if has_cover else slide_index
     if step_index < 0 or step_index >= len(steps):
-        st.warning('This meal does not have any directions yet.')
-        st.button('Return to home', on_click=close_directions_deck, use_container_width=True)
+        st.warning("This meal does not have any directions yet.")
+        st.button("Return to home", on_click=close_directions_deck, use_container_width=True)
         return
 
     step_text = steps[step_index]
-    step_photo_paths = meal_media_paths(list((meal.get('step_photos', {}) or {}).get(str(step_index), [])))
+    step_photo_paths = meal_media_paths(list((meal.get("step_photos", {}) or {}).get(str(step_index), [])))
 
-    st.markdown("<div class='deck-shell'>", unsafe_allow_html=True)
-    left_col, right_col = st.columns([1.05, 1.2])
-    with left_col:
+    if mobile_mode:
         st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
-        if not ingredients:
-            st.markdown("<div class='deck-ingredient deck-ingredient-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+        if ingredients:
+            ingredient_markup = "<ul class='ingredient-list'>" + "".join(f"<li>{escape(item)}</li>" for item in ingredients) + "</ul>"
+            st.markdown(f"<div class='deck-column'>{ingredient_markup}</div>", unsafe_allow_html=True)
         else:
-            ingredient_photo_map = meal.get('ingredient_photos', {}) if isinstance(meal.get('ingredient_photos', {}), dict) else {}
-            ingredient_cards = []
-            for ingredient in ingredients:
-                matched = ingredient_matches_step(ingredient, step_text)
-                block_class = 'deck-ingredient deck-ingredient-active' if matched else 'deck-ingredient'
-                name_class = 'deck-ingredient-name deck-ingredient-name-active' if matched else 'deck-ingredient-name'
-                ingredient_paths = meal_media_paths(list(ingredient_photo_map.get(ingredient, [])))
-                photo_html = ''
-                if ingredient_paths:
-                    photo_html = (
-                        f"<div class='deck-ingredient-thumb-wrap'>"
-                        f"<img class='deck-ingredient-thumb' src='file://{escape(ingredient_paths[0])}' alt='{escape(ingredient)}'>"
-                        f"</div>"
-                    )
-                ingredient_cards.append(
-                    f"<div class='{block_class}'>"
-                    f"{photo_html}"
-                    f"<div class='deck-ingredient-body'><div class='{name_class}'>{escape(ingredient)}</div></div>"
-                    f"</div>"
-                )
-            st.markdown("<div class='deck-ingredient-list-wrap'>" + ''.join(ingredient_cards) + "</div>", unsafe_allow_html=True)
+            st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
 
-    with right_col:
-        upper, lower = st.container(), st.container()
-        with upper:
-            st.markdown(f"<div class='deck-section-title'>Step {step_index + 1} photo</div>", unsafe_allow_html=True)
-            if step_photo_paths:
-                st.image(step_photo_paths[0], use_container_width=True)
+        st.markdown(f"<div class='deck-section-title'>Step {step_index + 1} directions</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='deck-column deck-column-directions'><div class='deck-step-text'>{escape(step_text)}</div></div>", unsafe_allow_html=True)
+
+        st.markdown(f"<div class='deck-section-title'>Step {step_index + 1} photo</div>", unsafe_allow_html=True)
+        if step_photo_paths:
+            st.image(step_photo_paths[0], use_container_width=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No photo for this step yet.</div>", unsafe_allow_html=True)
+    else:
+        st.markdown("<div class='deck-shell'>", unsafe_allow_html=True)
+        left_col, right_col = st.columns([1.05, 1.2])
+        with left_col:
+            st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
+            if not ingredients:
+                st.markdown("<div class='deck-ingredient deck-ingredient-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
             else:
-                st.markdown("<div class='deck-photo-empty'>No photo for this step yet.</div>", unsafe_allow_html=True)
-        with lower:
-            st.markdown(f"<div class='deck-section-title'>Step {step_index + 1} directions</div>", unsafe_allow_html=True)
-            st.markdown(f"<div class='deck-column deck-column-directions'><div class='deck-step-text'>{escape(step_text)}</div></div>", unsafe_allow_html=True)
+                ingredient_markup = "<ul class='ingredient-list'>" + "".join(f"<li>{escape(item)}</li>" for item in ingredients) + "</ul>"
+                st.markdown(f"<div class='deck-column'>{ingredient_markup}</div>", unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
-    nav1, nav2, nav3 = st.columns([1, 1, 1])
-    with nav1:
-        st.button('Back', on_click=change_direction_step, args=(-1,), disabled=(slide_index == 0), use_container_width=True)
-    with nav2:
-        st.button('Next', on_click=change_direction_step, args=(1,), disabled=(slide_index >= total_slides - 1), use_container_width=True)
-    with nav3:
-        st.button('Return to home', on_click=close_directions_deck, use_container_width=True)
+        with right_col:
+            upper, lower = st.container(), st.container()
+            with upper:
+                st.markdown(f"<div class='deck-section-title'>Step {step_index + 1} photo</div>", unsafe_allow_html=True)
+                if step_photo_paths:
+                    st.image(step_photo_paths[0], use_container_width=True)
+                else:
+                    st.markdown("<div class='deck-photo-empty'>No photo for this step yet.</div>", unsafe_allow_html=True)
+            with lower:
+                st.markdown(f"<div class='deck-section-title'>Step {step_index + 1} directions</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='deck-column deck-column-directions'><div class='deck-step-text'>{escape(step_text)}</div></div>", unsafe_allow_html=True)
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
 
 def render_meal_form(mode: str, meal: dict | None = None) -> dict:
     meal = meal or {}
@@ -1637,6 +1645,14 @@ def change_direction_step(delta: int) -> None:
     st.session_state['directions_step_index'] = max(0, min(total - 1, current + delta))
 
 
+def get_meals_slide_snapshot() -> List[dict]:
+    snapshot_names = st.session_state.get('meals_slide_names_snapshot', [])
+    if snapshot_names:
+        lookup = meal_lookup()
+        return [lookup[name] for name in snapshot_names if name in lookup]
+    return selected_unique_meals()
+
+
 def selected_unique_meals() -> List[dict]:
     unique_meals: List[dict] = []
     seen_names = set()
@@ -1652,15 +1668,21 @@ def selected_unique_meals() -> List[dict]:
 def open_meals_slide_deck() -> None:
     st.session_state['meals_slide_deck_active'] = True
     st.session_state['meals_slide_index'] = 0
+    st.session_state['meals_slide_names_snapshot'] = [
+        meal.get("description", "").strip()
+        for meal in selected_unique_meals()
+        if meal.get("description", "").strip()
+    ]
 
 
 def close_meals_slide_deck() -> None:
     st.session_state['meals_slide_deck_active'] = False
     st.session_state['meals_slide_index'] = 0
+    st.session_state['meals_slide_names_snapshot'] = []
 
 
 def change_meals_slide(delta: int) -> None:
-    meals = selected_unique_meals()
+    meals = get_meals_slide_snapshot()
     total = len(meals)
     if total <= 0:
         st.session_state['meals_slide_index'] = 0
@@ -1691,7 +1713,7 @@ def render_meals_slide_deck() -> None:
     for step_idx in range(len(steps)):
         step_photo_paths.extend(meal_media_paths(list(step_photo_map.get(str(step_idx), []))))
 
-    top_nav1, top_nav2, top_nav3, top_nav4 = st.columns([1, 1, 1.2, 3.2])
+    top_nav1, top_nav2, top_nav3, top_nav4, top_nav5 = st.columns([1, 1, 1.2, 1.4, 2.2])
     with top_nav1:
         st.button(
             "Back",
@@ -1699,6 +1721,7 @@ def render_meals_slide_deck() -> None:
             args=(-1,),
             disabled=(slide_index == 0),
             use_container_width=True,
+            key='meals_deck_back'
         )
     with top_nav2:
         st.button(
@@ -1707,73 +1730,106 @@ def render_meals_slide_deck() -> None:
             args=(1,),
             disabled=(slide_index >= len(meals) - 1),
             use_container_width=True,
+            key='meals_deck_next'
         )
     with top_nav3:
-        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True)
+        st.button("Return to home", on_click=close_meals_slide_deck, use_container_width=True, key='meals_deck_close')
     with top_nav4:
+        st.toggle('Mobile friendly mode', key='mobile_mode_meals_deck')
+    with top_nav5:
         st.markdown(
             f"<div class='deck-step-chip deck-step-chip-top'>Slide {slide_index + 1} of {len(meals)}</div>",
             unsafe_allow_html=True,
         )
 
+    mobile_mode = bool(st.session_state.get('mobile_mode_meals_deck', False))
     st.markdown(
         f"<div class='deck-kicker'>Meals slide deck</div><div class='deck-title'>{escape(meal_name)}</div>",
         unsafe_allow_html=True,
     )
 
-    top_left, top_right = st.columns([1.05, 1.15])
-    with top_left:
-        st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
-        if ingredients:
-            ingredient_markup = "<ul class='ingredient-list'>" + "".join(
-                f"<li>{escape(item)}</li>" for item in ingredients
-            ) + "</ul>"
-            st.markdown(
-                f"<div class='deck-column'>{ingredient_markup}</div>",
-                unsafe_allow_html=True,
-            )
-        else:
-            st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
-
-    with top_right:
+    if mobile_mode:
         st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
         if meal_photo_paths:
             st.image(meal_photo_paths[0], use_container_width=True)
         else:
             st.markdown("<div class='deck-photo-empty'>No finished meal photo yet.</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='deck-section-title'>Directions</div>", unsafe_allow_html=True)
-    if directions:
-        if steps:
-            directions_markup = "".join(
-                f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
-                for idx, step in enumerate(steps)
+        st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
+        if ingredients:
+            ingredient_markup = "<ul class='ingredient-list'>" + "".join(
+                f"<li>{escape(item)}</li>" for item in ingredients
+            ) + "</ul>"
+            st.markdown(f"<div class='deck-column'>{ingredient_markup}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='deck-section-title'>Steps</div>", unsafe_allow_html=True)
+        if directions:
+            if steps:
+                directions_markup = "".join(
+                    f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
+                    for idx, step in enumerate(steps)
+                )
+            else:
+                directions_markup = escape(directions)
+            st.markdown(f"<div class='deck-column deck-column-directions'>{directions_markup}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
+    else:
+        top_left, top_right = st.columns([1.05, 1.15])
+        with top_left:
+            st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
+            if ingredients:
+                ingredient_markup = "<ul class='ingredient-list'>" + "".join(
+                    f"<li>{escape(item)}</li>" for item in ingredients
+                ) + "</ul>"
+                st.markdown(
+                    f"<div class='deck-column'>{ingredient_markup}</div>",
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+
+        with top_right:
+            st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
+            if meal_photo_paths:
+                st.image(meal_photo_paths[0], use_container_width=True)
+            else:
+                st.markdown("<div class='deck-photo-empty'>No finished meal photo yet.</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='deck-section-title'>Directions</div>", unsafe_allow_html=True)
+        if directions:
+            if steps:
+                directions_markup = "".join(
+                    f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
+                    for idx, step in enumerate(steps)
+                )
+            else:
+                directions_markup = escape(directions)
+            st.markdown(
+                f"<div class='deck-column deck-column-directions'>{directions_markup}</div>",
+                unsafe_allow_html=True,
             )
         else:
-            directions_markup = escape(directions)
-        st.markdown(
-            f"<div class='deck-column deck-column-directions'>{directions_markup}</div>",
-            unsafe_allow_html=True,
-        )
-    else:
-        st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
+            st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='deck-section-title'>Step photos</div>", unsafe_allow_html=True)
-    if step_photo_paths:
-        display_paths = step_photo_paths[:8]
-        step_cols = st.columns(min(4, len(display_paths)))
-        for idx, photo_path in enumerate(display_paths):
-            with step_cols[idx % len(step_cols)]:
-                st.image(photo_path, use_container_width=True)
-    else:
-        st.markdown("<div class='deck-photo-empty'>No step photos yet.</div>", unsafe_allow_html=True)
+        st.markdown("<div class='deck-section-title'>Step photos</div>", unsafe_allow_html=True)
+        if step_photo_paths:
+            display_paths = step_photo_paths[:8]
+            step_cols = st.columns(min(4, len(display_paths)))
+            for idx, photo_path in enumerate(display_paths):
+                with step_cols[idx % len(step_cols)]:
+                    st.image(photo_path, use_container_width=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No step photos yet.</div>", unsafe_allow_html=True)
 
 
 def render_directions_deck(meal_name: str) -> None:
     meal = meal_lookup().get(meal_name, {})
     if not meal:
         st.warning("That meal could not be found.")
-        st.button("Return to home", on_click=close_directions_deck, use_container_width=True)
+        st.button("Return to home", key="directions_slide_close", on_click=close_directions_deck, use_container_width=True)
         return
 
     steps = parse_direction_steps(meal.get("directions", ""))
@@ -1784,7 +1840,7 @@ def render_directions_deck(meal_name: str) -> None:
 
     if total_slides <= 0:
         st.warning("This meal does not have any directions or meal photos yet.")
-        st.button("Return to home", on_click=close_directions_deck, use_container_width=True)
+        st.button("Return to home", key="directions_slide_close", on_click=close_directions_deck, use_container_width=True)
         return
 
     slide_index = int(st.session_state.get("directions_step_index", 0))
@@ -1793,11 +1849,11 @@ def render_directions_deck(meal_name: str) -> None:
 
     top_nav1, top_nav2, top_nav3, top_nav4 = st.columns([1, 1, 1.15, 3.2])
     with top_nav1:
-        st.button("Back", on_click=change_direction_step, args=(-1,), disabled=(slide_index == 0), use_container_width=True)
+        st.button("Back", key="directions_slide_back", on_click=change_direction_step, args=(-1,), disabled=(slide_index == 0), use_container_width=True)
     with top_nav2:
-        st.button("Next", on_click=change_direction_step, args=(1,), disabled=(slide_index >= total_slides - 1), use_container_width=True)
+        st.button("Next", key="directions_slide_next", on_click=change_direction_step, args=(1,), disabled=(slide_index >= total_slides - 1), use_container_width=True)
     with top_nav3:
-        st.button("Return to home", on_click=close_directions_deck, use_container_width=True)
+        st.button("Return to home", key="directions_slide_close", on_click=close_directions_deck, use_container_width=True)
     with top_nav4:
         st.markdown(
             f"<div class='deck-step-chip deck-step-chip-top'>Slide {slide_index + 1} of {total_slides}</div>",
@@ -1818,7 +1874,7 @@ def render_directions_deck(meal_name: str) -> None:
     step_index = slide_index - 1 if has_cover else slide_index
     if step_index < 0 or step_index >= len(steps):
         st.warning("This meal does not have any directions yet.")
-        st.button("Return to home", on_click=close_directions_deck, use_container_width=True)
+        st.button("Return to home", key="directions_slide_close", on_click=close_directions_deck, use_container_width=True)
         return
 
     step_text = steps[step_index]
@@ -1952,6 +2008,8 @@ def render_meal_prep_tab() -> None:
         st.info('Add at least one meal in the Meal Library to use meal prep.')
         return
 
+    mobile_mode = st.toggle('Mobile friendly mode', key='mobile_mode_prep')
+
     st.markdown('### Meal prep')
     selected_meal_names = st.multiselect(
         'Choose meals',
@@ -1968,9 +2026,8 @@ def render_meal_prep_tab() -> None:
 
     meal_quantities: dict[str, float] = {}
     st.markdown('### Selected meals')
-    qty_cols = st.columns(min(3, len(selected_meal_names)))
-    for idx, meal_name in enumerate(selected_meal_names):
-        with qty_cols[idx % len(qty_cols)]:
+    if mobile_mode:
+        for meal_name in selected_meal_names:
             meal_quantities[meal_name] = float(
                 st.number_input(
                     f'{meal_name} count',
@@ -1980,6 +2037,19 @@ def render_meal_prep_tab() -> None:
                     key=f'prep_qty_{meal_name}',
                 )
             )
+    else:
+        qty_cols = st.columns(min(3, len(selected_meal_names)))
+        for idx, meal_name in enumerate(selected_meal_names):
+            with qty_cols[idx % len(qty_cols)]:
+                meal_quantities[meal_name] = float(
+                    st.number_input(
+                        f'{meal_name} count',
+                        min_value=0.0,
+                        step=1.0,
+                        value=float(st.session_state.get(f'prep_qty_{meal_name}', 1.0)),
+                        key=f'prep_qty_{meal_name}',
+                    )
+                )
 
     prep_rows: List[dict] = []
     lookup = meal_lookup()
@@ -1998,27 +2068,46 @@ def render_meal_prep_tab() -> None:
         for idx, ingredient in enumerate(base_ingredients):
             guessed_qty, guessed_unit, guessed_name = parse_ingredient_amount_text(ingredient)
             safe_meal = slugify_for_path(meal_name)
-            row_cols = st.columns([2.5, 1.0, 1.2])
-            with row_cols[0]:
+            if mobile_mode:
                 item_name = st.text_input(
-                    'Ingredient',
+                    f'Ingredient',
                     value=st.session_state.get(f'prep_name_{safe_meal}_{idx}', guessed_name or ingredient),
                     key=f'prep_name_{safe_meal}_{idx}',
                 )
-            with row_cols[1]:
                 qty = st.number_input(
-                    'Qty per meal',
+                    f'Qty per meal',
                     min_value=0.0,
                     step=0.25,
                     value=float(st.session_state.get(f'prep_item_qty_{safe_meal}_{idx}', guessed_qty)),
                     key=f'prep_item_qty_{safe_meal}_{idx}',
                 )
-            with row_cols[2]:
                 unit = st.text_input(
-                    'Unit',
+                    f'Unit',
                     value=st.session_state.get(f'prep_unit_{safe_meal}_{idx}', guessed_unit),
                     key=f'prep_unit_{safe_meal}_{idx}',
                 )
+            else:
+                row_cols = st.columns([2.5, 1.0, 1.2])
+                with row_cols[0]:
+                    item_name = st.text_input(
+                        'Ingredient',
+                        value=st.session_state.get(f'prep_name_{safe_meal}_{idx}', guessed_name or ingredient),
+                        key=f'prep_name_{safe_meal}_{idx}',
+                    )
+                with row_cols[1]:
+                    qty = st.number_input(
+                        'Qty per meal',
+                        min_value=0.0,
+                        step=0.25,
+                        value=float(st.session_state.get(f'prep_item_qty_{safe_meal}_{idx}', guessed_qty)),
+                        key=f'prep_item_qty_{safe_meal}_{idx}',
+                    )
+                with row_cols[2]:
+                    unit = st.text_input(
+                        'Unit',
+                        value=st.session_state.get(f'prep_unit_{safe_meal}_{idx}', guessed_unit),
+                        key=f'prep_unit_{safe_meal}_{idx}',
+                    )
             prep_rows.append({
                 'meal_name': meal_name,
                 'name': item_name.strip(),
@@ -2041,15 +2130,21 @@ def render_meal_prep_tab() -> None:
     )
 
     for extra_idx in range(extra_count):
-        row_cols = st.columns([2.2, 1, 1.1, 1.4])
-        with row_cols[0]:
+        if mobile_mode:
             extra_name = st.text_input('Ingredient', key=f'prep_extra_name_{extra_idx}', placeholder='Extra ingredient')
-        with row_cols[1]:
             extra_qty = st.number_input('Qty per prep', min_value=0.0, step=0.25, value=float(st.session_state.get(f'prep_extra_qty_{extra_idx}', 0.0)), key=f'prep_extra_qty_{extra_idx}')
-        with row_cols[2]:
             extra_unit = st.text_input('Unit', key=f'prep_extra_unit_{extra_idx}', placeholder='cup, lb, can')
-        with row_cols[3]:
             extra_meals = st.number_input('Multiplier', min_value=0.0, step=1.0, value=float(st.session_state.get(f'prep_extra_mult_{extra_idx}', 1.0)), key=f'prep_extra_mult_{extra_idx}')
+        else:
+            row_cols = st.columns([2.2, 1, 1.1, 1.4])
+            with row_cols[0]:
+                extra_name = st.text_input('Ingredient', key=f'prep_extra_name_{extra_idx}', placeholder='Extra ingredient')
+            with row_cols[1]:
+                extra_qty = st.number_input('Qty per prep', min_value=0.0, step=0.25, value=float(st.session_state.get(f'prep_extra_qty_{extra_idx}', 0.0)), key=f'prep_extra_qty_{extra_idx}')
+            with row_cols[2]:
+                extra_unit = st.text_input('Unit', key=f'prep_extra_unit_{extra_idx}', placeholder='cup, lb, can')
+            with row_cols[3]:
+                extra_meals = st.number_input('Multiplier', min_value=0.0, step=1.0, value=float(st.session_state.get(f'prep_extra_mult_{extra_idx}', 1.0)), key=f'prep_extra_mult_{extra_idx}')
         if extra_name.strip():
             prep_rows.append({
                 'meal_name': 'Additional',
@@ -2104,11 +2199,17 @@ def render_meal_multiplier_tab() -> None:
         st.info('Add at least one meal in the Meal Library to use the meal multiplier.')
         return
 
-    top_left, top_right = st.columns([1.4, 1])
-    with top_left:
+    mobile_mode = st.toggle('Mobile friendly mode', key='mobile_mode_multiplier')
+
+    if mobile_mode:
         selected_meal_name = st.selectbox('Choose a meal', meals, key='multiplier_meal_name')
-    with top_right:
         total_meals = st.number_input('Total number of meals to plan', min_value=1.0, step=1.0, value=float(st.session_state.get('multiplier_total_meals', 1.0)), key='multiplier_total_meals')
+    else:
+        top_left, top_right = st.columns([1.4, 1])
+        with top_left:
+            selected_meal_name = st.selectbox('Choose a meal', meals, key='multiplier_meal_name')
+        with top_right:
+            total_meals = st.number_input('Total number of meals to plan', min_value=1.0, step=1.0, value=float(st.session_state.get('multiplier_total_meals', 1.0)), key='multiplier_total_meals')
 
     selected_meal = meal_lookup().get(selected_meal_name, {})
     base_ingredients = [item.strip() for item in selected_meal.get('ingredients', []) if item and item.strip()]
@@ -2120,13 +2221,18 @@ def render_meal_multiplier_tab() -> None:
         st.markdown('### Meal ingredients')
         for idx, ingredient in enumerate(base_ingredients):
             guessed_qty, guessed_unit, guessed_name = parse_ingredient_amount_text(ingredient)
-            row_cols = st.columns([2.8, 1.1, 1.3])
-            with row_cols[0]:
+            if mobile_mode:
                 item_name = st.text_input('Ingredient', value=guessed_name or ingredient, key=f'multiplier_name_{idx}')
-            with row_cols[1]:
                 qty = st.number_input('Qty per meal', min_value=0.0, step=0.25, value=float(st.session_state.get(f'multiplier_qty_{idx}', guessed_qty)), key=f'multiplier_qty_{idx}')
-            with row_cols[2]:
                 unit = st.text_input('Unit', value=st.session_state.get(f'multiplier_unit_{idx}', guessed_unit), key=f'multiplier_unit_{idx}')
+            else:
+                row_cols = st.columns([2.8, 1.1, 1.3])
+                with row_cols[0]:
+                    item_name = st.text_input('Ingredient', value=guessed_name or ingredient, key=f'multiplier_name_{idx}')
+                with row_cols[1]:
+                    qty = st.number_input('Qty per meal', min_value=0.0, step=0.25, value=float(st.session_state.get(f'multiplier_qty_{idx}', guessed_qty)), key=f'multiplier_qty_{idx}')
+                with row_cols[2]:
+                    unit = st.text_input('Unit', value=st.session_state.get(f'multiplier_unit_{idx}', guessed_unit), key=f'multiplier_unit_{idx}')
             multiplier_rows.append({'name': item_name.strip(), 'qty': float(qty), 'unit': unit.strip()})
     else:
         st.info('This meal does not have any ingredients yet.')
@@ -2136,17 +2242,25 @@ def render_meal_multiplier_tab() -> None:
     extra_count = int(st.number_input('Number of additional ingredients', min_value=0, max_value=20, step=1, value=int(st.session_state.get('multiplier_extra_count', 0)), key='multiplier_extra_count'))
 
     for extra_idx in range(extra_count):
-        row_cols = st.columns([2.2, 1, 1.1, 1.4])
-        with row_cols[0]:
+        if mobile_mode:
             extra_name = st.text_input('Ingredient', key=f'multiplier_extra_name_{extra_idx}', placeholder='Extra ingredient')
-        with row_cols[1]:
             extra_qty = st.number_input('Qty per meal', min_value=0.0, step=0.25, value=float(st.session_state.get(f'multiplier_extra_qty_{extra_idx}', 0.0)), key=f'multiplier_extra_qty_{extra_idx}')
-        with row_cols[2]:
             extra_unit = st.text_input('Unit', key=f'multiplier_extra_unit_{extra_idx}', placeholder='cup, lb, can')
-        with row_cols[3]:
             extra_total = extra_qty * float(total_meals)
             display_value = f"{format_scaled_quantity(extra_total)} {extra_unit}".strip()
             st.text_input('Scaled total', value=display_value, disabled=True, key=f'multiplier_extra_total_{extra_idx}')
+        else:
+            row_cols = st.columns([2.2, 1, 1.1, 1.4])
+            with row_cols[0]:
+                extra_name = st.text_input('Ingredient', key=f'multiplier_extra_name_{extra_idx}', placeholder='Extra ingredient')
+            with row_cols[1]:
+                extra_qty = st.number_input('Qty per meal', min_value=0.0, step=0.25, value=float(st.session_state.get(f'multiplier_extra_qty_{extra_idx}', 0.0)), key=f'multiplier_extra_qty_{extra_idx}')
+            with row_cols[2]:
+                extra_unit = st.text_input('Unit', key=f'multiplier_extra_unit_{extra_idx}', placeholder='cup, lb, can')
+            with row_cols[3]:
+                extra_total = extra_qty * float(total_meals)
+                display_value = f"{format_scaled_quantity(extra_total)} {extra_unit}".strip()
+                st.text_input('Scaled total', value=display_value, disabled=True, key=f'multiplier_extra_total_{extra_idx}')
         if extra_name.strip():
             multiplier_rows.append({'name': extra_name.strip(), 'qty': float(extra_qty), 'unit': extra_unit.strip()})
 
@@ -2258,6 +2372,7 @@ st.session_state.setdefault("directions_meal_name", "")
 st.session_state.setdefault("directions_step_index", 0)
 st.session_state.setdefault("meals_slide_deck_active", False)
 st.session_state.setdefault("meals_slide_index", 0)
+st.session_state.setdefault("meals_slide_names_snapshot", [])
 st.session_state.setdefault("meal_filter_preference", [])
 st.session_state.setdefault("meal_filter_time", [])
 st.session_state.setdefault("meal_filter_cost", [])
@@ -2265,6 +2380,12 @@ st.session_state.setdefault("meal_filter_fill", [])
 st.session_state.setdefault("num_days", 7)
 st.session_state.setdefault("safe_close_requested", False)
 st.session_state.setdefault("mobile_friendly_mode", False)
+st.session_state.setdefault("mobile_mode_planner", False)
+st.session_state.setdefault("mobile_mode_library", False)
+st.session_state.setdefault("mobile_mode_multiplier", False)
+st.session_state.setdefault("mobile_mode_prep", False)
+st.session_state.setdefault("mobile_mode_directions_deck", False)
+st.session_state.setdefault("mobile_mode_meals_deck", False)
 st.session_state.setdefault("meal_prep_mode_active", False)
 
 st.title("The Ultimate Meal Planner")
@@ -2338,12 +2459,12 @@ with selector_tab:
 
         top_mode_cols = st.columns([1.2, 2.4])
         with top_mode_cols[0]:
-            st.toggle("Mobile friendly mode", key="mobile_friendly_mode")
+            st.toggle("Mobile friendly mode", key="mobile_mode_planner")
         with top_mode_cols[1]:
             st.caption(f"Week starts {start_day.strftime('%A, %b %d, %Y')}.")
 
         option_map = {"Breakfast": breakfast_options, "Lunch": lunch_options, "Dinner": dinner_options}
-        if st.session_state.get("mobile_friendly_mode", False):
+        if st.session_state.get("mobile_mode_planner", False):
             render_mobile_planner(start_day, num_days, option_map)
         else:
             render_planner_grid(start_day, num_days, option_map)
@@ -2373,8 +2494,8 @@ with selector_tab:
                     with custom_filter_cols[idx % len(custom_filter_cols)]:
                         st.multiselect(extra.replace("_", " ").title(), options, key=f"meal_filter_custom_{extra}")
 
-        control_gap_open = "<div class='mobile-control-stack'>" if st.session_state.get("mobile_friendly_mode", False) else ""
-        control_gap_close = "</div>" if st.session_state.get("mobile_friendly_mode", False) else ""
+        control_gap_open = "<div class='mobile-control-stack'>" if st.session_state.get("mobile_mode_planner", False) else ""
+        control_gap_close = "</div>" if st.session_state.get("mobile_mode_planner", False) else ""
         st.markdown(control_gap_open, unsafe_allow_html=True)
         controls1, controls1b, controls2, controls3, controls4 = st.columns([1, 1, 1, 1, 1])
         with controls1:
@@ -2507,7 +2628,12 @@ with prep_tab:
     render_meal_prep_tab()
 
 with library_tab:
-    action_col1, action_col2, action_col3 = st.columns(3)
+    mobile_mode_library = st.toggle("Mobile friendly mode", key="mobile_mode_library")
+    if mobile_mode_library:
+        action_col1, action_col2, action_col3 = st.columns(1), st.columns(1), st.columns(1)
+        action_col1, action_col2, action_col3 = action_col1[0], action_col2[0], action_col3[0]
+    else:
+        action_col1, action_col2, action_col3 = st.columns(3)
     with action_col1:
         if st.button("Add New Meal", use_container_width=True):
             st.session_state.show_add_meal = not st.session_state.show_add_meal
