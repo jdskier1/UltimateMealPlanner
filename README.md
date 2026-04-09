@@ -1,8 +1,8 @@
-# UltimateMealPlanner
-This app helps plan food shopping trips by combining ingredients from different meals into a nicely organized list.  It also stores recipe's, pictures of completed meals, directions, and much much more. Once a meal plan is put together, you can export them in .csv for calandars, grocerie list..
+# Ultimate Meal Planner
+This app helps plan food shopping trips by combining ingredients from different meals into a nicely organized list.  It also stores recipe's, pictures of completed meals, cooking directions, and more. Once a meal plan is put together, you can export them in .csv for google calandar.  You can printe them off on 8.5x11" paper.  
 
-Meal Cards
-The program automatically generates recipe cards (photo of the completed meal with ingredients and lists all put together)
+Meal Cards:
+The program automatically generates recipe cards (photo of the completed meal with ingredients and lists all put together.
 
 Cooking Instructions:
 A slide deck of directions with step by step photos and ingre
