@@ -516,6 +516,15 @@ def grocery_items(meals: List[dict], include_standard_weekly: bool = False, stan
     return sorted(items)
 
 
+def filtered_display_ingredients(ingredients: List[str]) -> List[str]:
+    hidden_values = {"-eat out", "-leftovers"}
+    return [
+        item.strip()
+        for item in ingredients
+        if item and item.strip() and item.strip().lower() not in hidden_values
+    ]
+
+
 def csv_bytes_for_meals(start_day: date, dinner_only: bool = False) -> bytes:
     rows = []
     num_days = max(1, min(31, int(st.session_state.get("num_days", 7))))
@@ -1182,6 +1191,8 @@ def render_meals_slide_deck() -> None:
     for step_idx in range(len(steps)):
         step_photo_paths.extend(meal_media_paths(list(step_photo_map.get(str(step_idx), []))))
 
+    mobile_mode = bool(st.session_state.get("mobile_friendly_mode", False))
+
     top_nav1, top_nav2, top_nav3, top_nav4 = st.columns([1, 1, 1.2, 3.2])
     with top_nav1:
         st.button(
@@ -1211,6 +1222,39 @@ def render_meals_slide_deck() -> None:
         f"<div class='deck-kicker'>Meals slide deck</div><div class='deck-title'>{escape(meal_name)}</div>",
         unsafe_allow_html=True,
     )
+
+    if mobile_mode:
+        st.markdown("<div class='deck-section-title'>Finished meal photo</div>", unsafe_allow_html=True)
+        if meal_photo_paths:
+            st.image(meal_photo_paths[0], use_container_width=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No finished meal photo yet.</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='deck-section-title'>Ingredients</div>", unsafe_allow_html=True)
+        if ingredients:
+            ingredient_markup = "<ul class='ingredient-list'>" + "".join(
+                f"<li>{escape(item)}</li>" for item in ingredients
+            ) + "</ul>"
+            st.markdown(f"<div class='deck-column'>{ingredient_markup}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown("<div class='deck-photo-empty'>No ingredients listed.</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='deck-section-title'>Steps</div>", unsafe_allow_html=True)
+        if directions:
+            if steps:
+                directions_markup = "".join(
+                    f"<div style='margin-bottom:0.45rem;'><strong>Step {idx + 1}:</strong> {escape(step)}</div>"
+                    for idx, step in enumerate(steps)
+                )
+            else:
+                directions_markup = escape(directions)
+            st.markdown(
+                f"<div class='deck-column deck-column-directions'>{directions_markup}</div>",
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown("<div class='deck-photo-empty'>No directions added yet.</div>", unsafe_allow_html=True)
+        return
 
     top_left, top_right = st.columns([1.05, 1.15])
     with top_left:
@@ -1901,6 +1945,159 @@ def format_scaled_quantity(value: float) -> str:
     return f'{value:.2f}'.rstrip('0').rstrip('.')
 
 
+
+def render_meal_prep_tab() -> None:
+    meals = sorted([meal.get('description', '') for meal in load_meals() if meal.get('description')], key=str.lower)
+    if not meals:
+        st.info('Add at least one meal in the Meal Library to use meal prep.')
+        return
+
+    st.markdown('### Meal prep')
+    selected_meal_names = st.multiselect(
+        'Choose meals',
+        meals,
+        default=st.session_state.get('prep_selected_meals', []),
+        key='prep_selected_meals',
+    )
+
+    if not selected_meal_names:
+        st.info('Choose one or more meals to build a combined prep ingredient list.')
+        return
+
+    st.caption('Set how many times you want to make each meal, then adjust ingredient amounts and units as needed. The app will combine similar ingredients and scale them together.')
+
+    meal_quantities: dict[str, float] = {}
+    st.markdown('### Selected meals')
+    qty_cols = st.columns(min(3, len(selected_meal_names)))
+    for idx, meal_name in enumerate(selected_meal_names):
+        with qty_cols[idx % len(qty_cols)]:
+            meal_quantities[meal_name] = float(
+                st.number_input(
+                    f'{meal_name} count',
+                    min_value=0.0,
+                    step=1.0,
+                    value=float(st.session_state.get(f'prep_qty_{meal_name}', 1.0)),
+                    key=f'prep_qty_{meal_name}',
+                )
+            )
+
+    prep_rows: List[dict] = []
+    lookup = meal_lookup()
+    for meal_name in selected_meal_names:
+        meal = lookup.get(meal_name, {})
+        meal_count = float(meal_quantities.get(meal_name, 0.0) or 0.0)
+        if meal_count <= 0:
+            continue
+
+        base_ingredients = [item.strip() for item in meal.get('ingredients', []) if item and item.strip()]
+        st.markdown(f'### {meal_name} ingredients')
+        if not base_ingredients:
+            st.info(f'{meal_name} does not have any ingredients yet.')
+            continue
+
+        for idx, ingredient in enumerate(base_ingredients):
+            guessed_qty, guessed_unit, guessed_name = parse_ingredient_amount_text(ingredient)
+            safe_meal = slugify_for_path(meal_name)
+            row_cols = st.columns([2.5, 1.0, 1.2])
+            with row_cols[0]:
+                item_name = st.text_input(
+                    'Ingredient',
+                    value=st.session_state.get(f'prep_name_{safe_meal}_{idx}', guessed_name or ingredient),
+                    key=f'prep_name_{safe_meal}_{idx}',
+                )
+            with row_cols[1]:
+                qty = st.number_input(
+                    'Qty per meal',
+                    min_value=0.0,
+                    step=0.25,
+                    value=float(st.session_state.get(f'prep_item_qty_{safe_meal}_{idx}', guessed_qty)),
+                    key=f'prep_item_qty_{safe_meal}_{idx}',
+                )
+            with row_cols[2]:
+                unit = st.text_input(
+                    'Unit',
+                    value=st.session_state.get(f'prep_unit_{safe_meal}_{idx}', guessed_unit),
+                    key=f'prep_unit_{safe_meal}_{idx}',
+                )
+            prep_rows.append({
+                'meal_name': meal_name,
+                'name': item_name.strip(),
+                'qty': float(qty),
+                'unit': unit.strip(),
+                'meal_count': meal_count,
+            })
+
+    st.markdown('### Additional ingredients')
+    st.caption('Add ingredients here that are not on the selected meal ingredient lists.')
+    extra_count = int(
+        st.number_input(
+            'Number of additional ingredients',
+            min_value=0,
+            max_value=30,
+            step=1,
+            value=int(st.session_state.get('prep_extra_count', 0)),
+            key='prep_extra_count',
+        )
+    )
+
+    for extra_idx in range(extra_count):
+        row_cols = st.columns([2.2, 1, 1.1, 1.4])
+        with row_cols[0]:
+            extra_name = st.text_input('Ingredient', key=f'prep_extra_name_{extra_idx}', placeholder='Extra ingredient')
+        with row_cols[1]:
+            extra_qty = st.number_input('Qty per prep', min_value=0.0, step=0.25, value=float(st.session_state.get(f'prep_extra_qty_{extra_idx}', 0.0)), key=f'prep_extra_qty_{extra_idx}')
+        with row_cols[2]:
+            extra_unit = st.text_input('Unit', key=f'prep_extra_unit_{extra_idx}', placeholder='cup, lb, can')
+        with row_cols[3]:
+            extra_meals = st.number_input('Multiplier', min_value=0.0, step=1.0, value=float(st.session_state.get(f'prep_extra_mult_{extra_idx}', 1.0)), key=f'prep_extra_mult_{extra_idx}')
+        if extra_name.strip():
+            prep_rows.append({
+                'meal_name': 'Additional',
+                'name': extra_name.strip(),
+                'qty': float(extra_qty),
+                'unit': extra_unit.strip(),
+                'meal_count': float(extra_meals),
+            })
+
+    aggregated: dict[tuple[str, str], dict] = {}
+    for row in prep_rows:
+        name = row.get('name', '').strip()
+        qty = float(row.get('qty', 0.0) or 0.0)
+        unit = row.get('unit', '').strip()
+        meal_count = float(row.get('meal_count', 0.0) or 0.0)
+        if not name or qty <= 0 or meal_count <= 0:
+            continue
+        norm_name = normalize_ingredient_name(name) or name.lower().strip()
+        key = (norm_name, unit.lower())
+        entry = aggregated.setdefault(key, {
+            'ingredient': name,
+            'unit': unit,
+            'total_qty': 0.0,
+            'used_in': set(),
+        })
+        entry['total_qty'] += qty * meal_count
+        entry['used_in'].add(str(row.get('meal_name', '')))
+
+    st.markdown('### Combined prep ingredient list')
+    if not aggregated:
+        st.info('Enter meal counts or ingredient amounts to generate the prep list.')
+        return
+
+    output_rows = []
+    for (_name_key, _unit_key), entry in sorted(aggregated.items(), key=lambda item: item[1]['ingredient'].lower()):
+        output_rows.append({
+            'Ingredient': entry['ingredient'],
+            'Unit': entry['unit'],
+            'Scaled Amount': f"{format_scaled_quantity(entry['total_qty'])} {entry['unit']}".strip(),
+            'Used In': ', '.join(sorted(name for name in entry['used_in'] if name)),
+        })
+
+    output_df = pd.DataFrame(output_rows)
+    st.dataframe(output_df, use_container_width=True, hide_index=True)
+    csv_bytes = output_df.to_csv(index=False).encode('utf-8')
+    st.download_button('Download meal prep ingredient list (.csv)', csv_bytes, file_name='meal_prep_ingredient_list.csv', mime='text/csv', use_container_width=True)
+
+
 def render_meal_multiplier_tab() -> None:
     meals = sorted([meal.get('description', '') for meal in load_meals() if meal.get('description')], key=str.lower)
     if not meals:
@@ -1975,7 +2172,6 @@ def render_meal_multiplier_tab() -> None:
         output_rows.append({
             'Ingredient': display_name,
             'Unit': display_unit,
-            'Total Quantity': format_scaled_quantity(total_qty),
             'Scaled Amount': f"{format_scaled_quantity(total_qty)} {display_unit}".strip(),
         })
 
@@ -2073,7 +2269,7 @@ st.session_state.setdefault("meal_prep_mode_active", False)
 
 st.title("The Ultimate Meal Planner")
 
-selector_tab, library_tab, multiplier_tab = st.tabs(["Meal Planner", "Meal Library", "Meal Multiplier"])
+selector_tab, library_tab, multiplier_tab, prep_tab = st.tabs(["Meal Planner", "Meal Library", "Meal Multiplier", "Meal Prep"])
 
 
 def render_planner_grid(start_day: date, num_days: int, option_map: Dict[str, List[str]]) -> None:
@@ -2280,7 +2476,7 @@ with selector_tab:
                 if not meal_name or meal_name in seen:
                     continue
                 seen.add(meal_name)
-                ingredients = [item.strip() for item in meal.get("ingredients", []) if item and item.strip()]
+                ingredients = filtered_display_ingredients(meal.get("ingredients", []))
                 if ingredients:
                     ingredient_markup = '<ul class="ingredient-list">' + ''.join(f'<li>{escape(item)}</li>' for item in ingredients) + '</ul>'
                 else:
@@ -2291,25 +2487,24 @@ with selector_tab:
             tile_html.append("</div>")
             st.markdown("".join(tile_html), unsafe_allow_html=True)
 
-            st.subheader("Meal Slides")
-
-            deck_action_cols = st.columns(2)
-            with deck_action_cols[0]:
-                st.button("Open meals slide deck", use_container_width=True, on_click=open_meals_slide_deck, key="open_meals_slide_deck_button")
-            with deck_action_cols[1]:
-                st.button("Open meal prep mode", use_container_width=True, on_click=open_meal_prep_mode, key="open_meal_prep_mode_button")
-
             st.subheader("Directions Slides")
-            if not direction_meal_names:
-                st.info("Add directions to a meal in the Meal Library to use the slide deck view.")
+            slide_button_names = ["Open meals slide deck"] + direction_meal_names
+            if len(slide_button_names) == 1:
+                st.button("Open meals slide deck", use_container_width=True, on_click=open_meals_slide_deck, key="open_meals_slide_deck_button")
+                st.info("Add directions to a meal in the Meal Library to use the direction slide deck view.")
             else:
-                button_cols = st.columns(min(4, len(direction_meal_names)))
-                for idx, meal_name in enumerate(direction_meal_names):
+                button_cols = st.columns(min(4, len(slide_button_names)))
+                with button_cols[0]:
+                    st.button("Open meals slide deck", use_container_width=True, on_click=open_meals_slide_deck, key="open_meals_slide_deck_button")
+                for idx, meal_name in enumerate(direction_meal_names, start=1):
                     with button_cols[idx % len(button_cols)]:
                         st.button(meal_name, key=f"open_directions_{meal_name}", use_container_width=True, on_click=open_directions_deck, args=(meal_name,))
 
 with multiplier_tab:
     render_meal_multiplier_tab()
+
+with prep_tab:
+    render_meal_prep_tab()
 
 with library_tab:
     action_col1, action_col2, action_col3 = st.columns(3)
