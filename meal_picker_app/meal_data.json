@@ -1,1117 +1,5 @@
 [
   {
-    "description": "Avocado Pesto Pasta",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Avocado",
-      "Basil",
-      "Olive Oil",
-      "Pasta",
-      "Chicken",
-      "Pine Nuts (Optional)",
-      "Bell Peppers (Optional)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Sloppy Joes",
-    "category": "Dinner",
-    "preference": "Very High",
-    "time": "Short",
-    "cost": "$",
-    "fill": "Needs Vegetable",
-    "ingredients": [
-      "Ground Beef/Turkey",
-      "Sloppy Joe Bread",
-      "Tomato Paste",
-      "Onion",
-      "Steak Seasoning",
-      "Red Bell Pepper",
-      "Tomato Sauce"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Pork Loin in Crock Pot",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Short",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Pork Loin",
-      "BBQ Sauce",
-      "Salsa",
-      "Carrots"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Korean Bibimpap",
-    "category": "Dinner",
-    "preference": "Very High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Ground Beef",
-      "Carrots",
-      "Ginger",
-      "Zucchini",
-      "Ginger",
-      "Red Bell Pepper",
-      "Onion"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Chicken & Veg Skewers",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Starch",
-    "ingredients": [
-      "Chicken Thigh/Breast",
-      "Onion",
-      "Pepper",
-      "Zuchini (optional)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Calzones",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Long",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Yeast (Option 1)",
-      "Flour (Option 1)",
-      "Marinara Sauce",
-      "Artichokes (Optional)",
-      "Black Olives",
-      "Pepperoni",
-      "Bell Pepper",
-      "Pizza Cheese",
-      "Pizza Dough (Option 2)",
-      "Ricotta"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Pizza",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Long",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Yeast (Option 1)",
-      "Flour (Option 1)",
-      "Marinara Sauce",
-      "Artichokes (Optional)",
-      "Black Olives",
-      "Pepperoni",
-      "Bell Pepper",
-      "Pizza Cheese",
-      "Pizza Dough (Option 2)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Chicken and Dumplings",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chicken",
-      "Bisquik",
-      "Carrots",
-      "Celery",
-      "Onion",
-      "Chicken Broth (Large)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Pork Thai Basil Stir Fry",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Ground Pork",
-      "Thai Basil",
-      "Rice",
-      "Shallot",
-      "Baby Bok Choy",
-      "Lime",
-      "Fish Sauce"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Southwest Chicken (HF)",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chicken Breast",
-      "Southwest seasoning",
-      "Sweet Potato",
-      "Red Bell Pepper",
-      "Feta"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "BBQ Chicken",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "BBQ Sauce",
-      "Chicken for Grillin"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Power Bowl",
-    "category": "Lunch/Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Farro",
-      "Sweet Potato",
-      "Onion",
-      "Pistacio",
-      "Vegetable Broth",
-      "Shallot"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Spaghetti and Meatballs (Lidia ish)",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Spaghetti",
-      "Meat Balls",
-      "San Marizano Tomato's",
-      "Basil"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Baked Fish & Rice",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$$",
-    "fill": "Needs Vegetable",
-    "ingredients": [
-      "Fish",
-      "Spices for Fish",
-      "Rice"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Classic Spaghetti",
-    "category": "Dinner",
-    "preference": "Very High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Spaghetti Noodles",
-      "Salsa",
-      "Petite Diced Tomato",
-      "Itialian Spice",
-      "Basil (Optional)",
-      "Itialian Sausage",
-      "Bread (Optional)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Sushi",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Long",
-    "cost": "$$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Rice Vinigar",
-      "Sticky Rice",
-      "Seaweed",
-      "Imitation Crab",
-      "Avocado",
-      "Soy Sauce",
-      "Cucumber",
-      "Seasame Seeds"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Ham",
-    "category": "Dinner",
-    "preference": "Low",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Ham"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Whole Crock/Insta-Pot Chicken",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Whole Chicken",
-      "Onion"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Beef Stew",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Beef for Stew",
-      "Carrots",
-      "Celery",
-      "Potato",
-      "Onion",
-      "Beef Broth"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Chicken Pineapple Quesadilla's",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Pineapple",
-      "Chicken",
-      "Quesadilla Cheese",
-      "Tortillas",
-      "Bell Pepper",
-      "Onion",
-      "Salsa",
-      "Sour Cream (Optional)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Shoyu Chicken & Rice",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable",
-    "ingredients": [
-      "Chicken Drumstick/Thigh",
-      "Ginger",
-      "Soy Sauce",
-      "Brown Sugar",
-      "Onion",
-      "Rice"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Corned Beef & Cabbage",
-    "category": "Dinner",
-    "preference": "Low",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Corned Beef",
-      "Cabbage",
-      "Carrots",
-      "Potato",
-      "Beef Broth",
-      "Beer"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Beef/Turkey Chili",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chili Beans",
-      "Salsa",
-      "Petite Diced Tomato",
-      "Chilli Powder",
-      "Ground Beef/Turkey"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Brats",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Brats",
-      "Brat Buns",
-      "Cabbage",
-      "Carrots",
-      "Mayo",
-      "Soutwest Seasoning"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Pork Chop Instapot",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Pork Chops",
-      "Chicken Broth"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Grilled Cheese & Tomato Soup",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Short",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Tomato Soup",
-      "Sliced Bread",
-      "Grilled Cheese Cheese"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Fish Tacos",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Fish",
-      "Flour",
-      "Egg",
-      "Cabbage",
-      "Carrots",
-      "Mayo",
-      "Southwest Seasoning",
-      "Avocado",
-      "LIme",
-      "Corn Torilla's"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Kielbasa",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Short",
-    "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Kielbasa"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Chicken Curry",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Long",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chicken",
-      "Yellow Curry Powder",
-      "Red Curry",
-      "Pepper",
-      "Ginger",
-      "Onion",
-      "Yellow Popato",
-      "Cauliflower",
-      "Carrots"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Fajita's",
-    "category": "Lunch/Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chicken",
-      "Flour Tortilla's",
-      "Cheese",
-      "Bell Peppers",
-      "Rice",
-      "Black Beans (Optional)",
-      "Sour Cream (Optional)",
-      "Onion",
-      "Fajita Spice Blend",
-      "Avocado"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Stir Fry",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chicken",
-      "Assorted Vegi's",
-      "Soy Sauce",
-      "Rice",
-      "Ginger",
-      "Onion"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Grilled Chicken Salad",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Salad Mix/Lettuce",
-      "Assorted Vegi's (optional)",
-      "Chicken",
-      "Chick Peas",
-      "Black Olives",
-      "Eggs"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Simple Chicken",
-    "category": "Lunch/Dinner",
-    "preference": "Very High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Chicken"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Ribs & Rice",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Long",
-    "cost": "$$$",
-    "fill": "Needs Vegetable",
-    "ingredients": [
-      "Ribs",
-      "Rice",
-      "BBQ Sauce"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Meatloaf",
-    "category": "Dinner",
-    "preference": "Low",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable",
-    "ingredients": [
-      "Ground Beef",
-      "Bread Crumbs",
-      "Shallot",
-      "Beef Broth",
-      "Panko",
-      "Ketchup",
-      "Tomato Paste (Optional)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Pasta Salad with Chicken",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Noodles",
-      "Chicken",
-      "Chick Peas",
-      "Olives",
-      "Artichokes",
-      "Basalmic Vinagrette",
-      "Carrots",
-      "Celery",
-      "Bell Pepper"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Grilled Chicken & Macaroni Salad",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable",
-    "ingredients": [
-      "Chicken",
-      "Macaroni Noodles",
-      "Mayo",
-      "Carrots",
-      "Celery",
-      "Mustard",
-      "White Vinegar"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Chicken Quinoa Salad",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Black Beans",
-      "Corn Kernals",
-      "Grilled Chicken",
-      "Chick Pease",
-      "Quinoa",
-      "Black Olives",
-      "Artichoke",
-      "Bell Pepper"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Apricot Almond and Chicpea Tagine",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Onion",
-      "Cilantro",
-      "Lemon",
-      "Jalapeno",
-      "Zucchini",
-      "Chickpeas",
-      "Sour Cream",
-      "Vegetable Broth",
-      "Almonds",
-      "Apricots"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Black Bean Burgers",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable",
-    "ingredients": [
-      "Black Beans",
-      "Bread Crumbs",
-      "Egg",
-      "Steak Seasoning",
-      "Green Pepper",
-      "Onion",
-      "Burger Buns",
-      "Lettuce"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "BLAT Sandwich",
-    "category": "Lunch/Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Bacon",
-      "Lettuce",
-      "Avocado",
-      "Tomato",
-      "Sliced Bread"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Chicken Sandwich",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Sliced Bread",
-      "Chicken",
-      "Lettuce",
-      "Avocado",
-      "Sandwich Cheese",
-      "Mayo",
-      "Mustard"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Ham Soup",
-    "category": "Dinner",
-    "preference": "Low",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Ham",
-      "Potato",
-      "Carrots",
-      "Celery",
-      "Onion",
-      "Chicken Broth (Large)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Russet Sausage Breakfast Burrito's",
-    "category": "Breakfast/Lunch",
-    "preference": "Very High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Tortillas",
-      "Breakfast Sausage",
-      "Eggs",
-      "Russet Potato"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Blue Moon Special",
-    "category": "Breakfast",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "English Muffins",
-      "Sausage Patty (Bacon Optional)",
-      "American Cheese",
-      "Eggs"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Bagel Sandwich",
-    "category": "Breakfast",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Bagels",
-      "Egg",
-      "Breakfast Meat",
-      "Avocado"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Bagels & Cream Cheese",
-    "category": "Breakfast",
-    "preference": "Low",
-    "time": "Short",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Bagels",
-      "Cream Cheese"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Breakfast Casserole",
-    "category": "Breakfast",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Eggs",
-      "Sweet Potato",
-      "Breakfast Sausage",
-      "Onion",
-      "Spinach"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Chicken Noodle/Rice Soup",
-    "category": "Lunch/Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chicken",
-      "Chicken Broth",
-      "Carrots",
-      "Celery",
-      "Onion",
-      "Noodle/Rice"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
     "description": "--",
     "category": "Breakfast/Lunch/Dinner",
     "preference": "Medium",
@@ -1119,461 +7,6 @@
     "cost": "$$",
     "fill": "Complete",
     "ingredients": [],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Hamburgers",
-    "category": "Dinner",
-    "preference": "Low",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Ground Beef",
-      "Hamburger Buns",
-      "Lettuce",
-      "Avocado",
-      "Hamburger Cheese"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Seame Beef/Pork/Fish Tacos",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Radishes",
-      "Cucumbers",
-      "Scallions",
-      "Sour Cream",
-      "Cabbage",
-      "Ground Beef/Turkey/Pork",
-      "Flour Tortillas"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Crispy Shannon Spiced Chicken/Fish",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
-    "ingredients": [
-      "Chicken/Fish",
-      "Panko Bread Crumbs",
-      "Shannon Spice"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Lettuce Wraps",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Ground chicken/turkey",
-      "hoison sauce",
-      "Lettuce",
-      "Onion",
-      "Ginger",
-      "Water Chestnuts",
-      "Green Onion"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Itialian Sausage Soup",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Itialian Sausage",
-      "Chicken Broth",
-      "White Beans",
-      "Carrots",
-      "Zucchini",
-      "Kale/Spinach",
-      "Fire roasted tomatoes"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Sandwich (Classic)",
-    "category": "Lunch",
-    "preference": "High",
-    "time": "Short",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Sliced Bread",
-      "Lunch Meat",
-      "Avocado",
-      "Lettuce",
-      "Any desired special sandwich upgrades (banana peppers or fancy mustard\u2026)"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Pasta Primavera",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Penne Pasta",
-      "Red Onion",
-      "Carrots",
-      "Red Bell Pepper",
-      "Broccoli",
-      "Cherry Tomato's",
-      "Zucchini",
-      "Cashews",
-      "Lemon Juice"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Lentil Stew",
-    "category": "Dinner",
-    "preference": "Medium",
-    "time": "Short",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Onion",
-      "Garlic",
-      "Cumin",
-      "Curry Powder",
-      "Petite Diced Tomato",
-      "Lentils",
-      "Vegtable Broth"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Pot Stickers and Edemame",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Pot Stickers (frozen)",
-      "Edemame"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Sweet Bacon Breakfast Burrito's",
-    "category": "Breakfast",
-    "preference": "Very High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Tortillas",
-      "Bacon",
-      "Eggs",
-      "Sweet Potato"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Simple Quinoa",
-    "category": "Lunch/Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Quinoa",
-      "Simple Dressing",
-      "What ever veggies we got"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Caprese Linguine",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "cherry tomatoes",
-      "linguine",
-      "garlic",
-      "fresh mozzerella",
-      "basil"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "American Tacos",
-    "category": "Lunch/Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Ground Beef",
-      "Diced Tomatos",
-      "Lettuce",
-      "Cheese",
-      "Salsa",
-      "Taco Shell's (optional)",
-      "Avocado",
-      "Taco Sized Tortillas (Optional)",
-      "Salt and Pepper"
-    ],
-    "directions": "1) Add ground beef to pan.  Salt and pepper to taste.  Brown.\n2) Chop Lettuce\n3) Shred Cheese\n4) Assemble the Taco Shell's (optional) or Taco Sized Tortillas (Optional) with beef, lettuce, cheese, salsa, avocado, and diced tomato's as desired.",
-    "testy1": "Super good in this way",
-    "testy2": "yes",
-    "testy3": "pretty good",
-    "meal_photos": [
-      "meal_media/american_tacos/meal_photos/meal/meal_01.jpeg"
-    ],
-    "ingredient_photos": {
-      "Ground Beef": [
-        "meal_media/american_tacos/ingredient_photos/ground_beef/ground_beef_01.jpeg"
-      ],
-      "Diced Tomatos": [
-        "meal_media/american_tacos/ingredient_photos/diced_tomatos/diced_tomatos_01.jpeg"
-      ],
-      "Lettuce": [
-        "meal_media/american_tacos/ingredient_photos/lettuce/lettuce_01.jpeg"
-      ],
-      "Cheese": [
-        "meal_media/american_tacos/ingredient_photos/cheese/cheese_01.jpeg"
-      ],
-      "Salsa": [
-        "meal_media/american_tacos/ingredient_photos/salsa/salsa_01.jpeg"
-      ],
-      "Taco Shell's (optional)": [
-        "meal_media/american_tacos/ingredient_photos/taco_shells_optional/taco_shells_optional_01.webp"
-      ],
-      "Avocado": [
-        "meal_media/american_tacos/ingredient_photos/avocado/avocado_01.jpeg"
-      ],
-      "Taco Sized Tortillas (Optional)": [
-        "meal_media/american_tacos/ingredient_photos/taco_sized_tortillas_optional/taco_sized_tortillas_optional_01.jpeg"
-      ],
-      "Salt and Pepper": [
-        "meal_media/american_tacos/ingredient_photos/salt_and_pepper/salt_and_pepper_01.jpeg"
-      ]
-    },
-    "step_photos": {
-      "0": [
-        "meal_media/american_tacos/step_photos/step_1/step_1_01.jpeg"
-      ],
-      "1": [
-        "meal_media/american_tacos/step_photos/step_2/step_2_01.jpeg"
-      ],
-      "2": [
-        "meal_media/american_tacos/step_photos/step_3/step_3_01.jpeg"
-      ],
-      "3": [
-        "meal_media/american_tacos/step_photos/step_4/step_4_01.jpeg"
-      ]
-    }
-  },
-  {
-    "description": "Spanish Rice",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "Tomato Paste",
-      "Jasmine Rice",
-      "Garlic"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "-Leftovers",
-    "category": "Breakfast/Lunch/Dinner",
-    "preference": "High",
-    "time": "Low",
-    "cost": "$",
-    "fill": "",
-    "ingredients": [],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Omlets",
-    "category": "Breakfast/Lunch",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Eggs",
-      "Diced Ham/Bacon",
-      "Green/Red Bell Pepper",
-      "Diced white onion"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Breakfast Stir Fry",
-    "category": "Breakfast",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Eggs",
-      "Rice",
-      "Stir Fry Veg"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Eggs & JD Potato's",
-    "category": "Breakfast/Lunch",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Needs Vegitable",
-    "ingredients": [
-      "Eggs",
-      "Russet Potato's",
-      "Seasoned Salt"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Turkey and rice soup",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Turkey",
-      "Rice",
-      "Carrots",
-      "Celery"
-    ],
     "directions": "",
     "meal_photos": [],
     "ingredient_photos": {},
@@ -1599,6 +32,629 @@
     "testy2": ""
   },
   {
+    "description": "-Leftovers",
+    "category": "Breakfast/Lunch/Dinner",
+    "preference": "High",
+    "time": "Low",
+    "cost": "$",
+    "fill": "",
+    "ingredients": [],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "American Tacos",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": 0.5,
+        "unit": "lb",
+        "name": "Ground Beef"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Diced Tomatos"
+      },
+      {
+        "qty": 0.25,
+        "unit": "",
+        "name": "Head Lettuce"
+      },
+      {
+        "qty": 0.5,
+        "unit": "cup",
+        "name": "Cheese"
+      },
+      {
+        "qty": 0.25,
+        "unit": "cup",
+        "name": "Salsa"
+      },
+      {
+        "qty": 4.0,
+        "unit": "",
+        "name": "Taco Shell's (optional)"
+      },
+      {
+        "qty": 0.5,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": 4.0,
+        "unit": "",
+        "name": "Taco Sized Tortillas (Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salt"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pepper"
+      }
+    ],
+    "directions": "1) Add ground beef to pan.  Salt and pepper to taste.  Brown.\n2) Chop Lettuce\n3) Shred Cheese\n4) Assemble the Taco Shell's (optional) or Taco Sized Tortillas (Optional) with beef, lettuce, cheese, salsa, avocado, and diced tomato's as desired.",
+    "notes": "",
+    "testy1": "Super good in this way",
+    "testy2": "yes",
+    "testy3": "pretty good",
+    "meal_photos": [
+      "meal_media/american_tacos/meal_photos/meal/meal_01.jpeg"
+    ],
+    "ingredient_photos": {
+      "Diced Tomatos": [
+        "meal_media/american_tacos/ingredient_photos/diced_tomatos/diced_tomatos_01.jpeg"
+      ]
+    },
+    "step_photos": {
+      "0": [
+        "meal_media/american_tacos/step_photos/step_1/step_1_01.jpeg"
+      ],
+      "1": [
+        "meal_media/american_tacos/step_photos/step_2/step_2_01.jpeg"
+      ],
+      "2": [
+        "meal_media/american_tacos/step_photos/step_3/step_3_01.jpeg"
+      ],
+      "3": [
+        "meal_media/american_tacos/step_photos/step_4/step_4_01.jpeg"
+      ]
+    }
+  },
+  {
+    "description": "Apricot Almond and Chicpea Tagine",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cilantro"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lemon"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Jalapeno"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Zucchini"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chickpeas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sour Cream"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Vegetable Broth"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Almonds"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Apricots"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Avocado Pesto Pasta",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Basil"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Olive Oil"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pasta"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pine Nuts (Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Peppers (Optional)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Bagel Sandwich",
+    "category": "Breakfast",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": 4.0,
+        "unit": "",
+        "name": "Bagels"
+      },
+      {
+        "qty": 6.0,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": 4.0,
+        "unit": "slice",
+        "name": "Cheese (Optional)"
+      },
+      {
+        "qty": 0.5,
+        "unit": "lb",
+        "name": "Breakfast Meat"
+      },
+      {
+        "qty": 1.0,
+        "unit": "",
+        "name": "Avocado"
+      }
+    ],
+    "directions": "1) Cook breakfast meat in sandwich shape\n2) Cook eggs in a sandwich shape\n3) Toast bagel\n4) Assemble sandwich",
+    "notes": "",
+    "testy1": "",
+    "testy2": "",
+    "testy3": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {}
+  },
+  {
+    "description": "Bagels & Cream Cheese",
+    "category": "Breakfast",
+    "preference": "Low",
+    "time": "Short",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bagels"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cream Cheese"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Baked Fish & Rice",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$$",
+    "fill": "Needs Vegetable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Fish"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Spices for Fish"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "BBQ Chicken",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "BBQ Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken for Grillin"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Beef Stew",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Beef for Stew"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Celery"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Potato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Beef Broth"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Beef/Turkey Chili",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chili Beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salsa"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Petite Diced Tomato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chilli Powder"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Beef/Turkey"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Black Bean Burgers",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bread Crumbs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Egg"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Steak Seasoning"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Green Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Burger Buns"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lettuce"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "BLAT Sandwich",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bacon"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lettuce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sliced Bread"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Blue Moon Special",
+    "category": "Breakfast",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "English Muffins"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sausage Patty (Bacon Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "American Cheese"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Brats",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Brats"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Brat Buns"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cabbage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mayo"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Soutwest Seasoning"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
     "description": "Bread (Classic)",
     "category": "Breakfast/Lunch/Dinner",
     "preference": "High",
@@ -1606,10 +662,26 @@
     "cost": "$",
     "fill": "Complete",
     "ingredients": [
-      "Bread Flour",
-      "All Purpose Flour",
-      "Active Dry Yeast",
-      "Salt"
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bread Flour"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "All Purpose Flour"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Active Dry Yeast"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salt"
+      }
     ],
     "directions": "",
     "meal_photos": [],
@@ -1620,87 +692,38 @@
     "testy2": ""
   },
   {
-    "description": "Lasagna",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Ricotta",
-      "Lasagna Noodles",
-      "Mozzerella",
-      "Ground Beef",
-      "Onion",
-      "Garlic",
-      "Crushed Tomato's",
-      "Tomato Sauce"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Turkey Chili Soup",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "ground turkey",
-      "onion",
-      "bell pepper",
-      "white beans",
-      "salsa verde",
-      "chicken broth"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Tuna Fish Casserole",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$",
-    "fill": "Complete",
-    "ingredients": [
-      "egg noodles",
-      "Tuna fish",
-      "green pepper",
-      "onion",
-      "mushroom soup"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Quiche in 5\" pans",
+    "description": "Breakfast Casserole",
     "category": "Breakfast",
     "preference": "High",
     "time": "Medium",
     "cost": "$$",
     "fill": "Complete",
     "ingredients": [
-      "Eggs",
-      "Crisco",
-      "Flour",
-      "Breakfast Meat"
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sweet Potato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Breakfast Sausage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Spinach"
+      }
     ],
     "directions": "",
     "meal_photos": [],
@@ -1711,16 +734,28 @@
     "testy2": ""
   },
   {
-    "description": "Ham dinner",
-    "category": "Dinner",
+    "description": "Breakfast Stir Fry",
+    "category": "Breakfast",
     "preference": "High",
     "time": "Medium",
     "cost": "$$",
     "fill": "Complete",
     "ingredients": [
-      "Ham",
-      "Baked potatoes",
-      "Veggies"
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Stir Fry Veg"
+      }
     ],
     "directions": "",
     "meal_photos": [],
@@ -1731,114 +766,63 @@
     "testy2": ""
   },
   {
-    "description": "Red beans and rice",
-    "category": "---",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Red beans",
-      "Sausage",
-      "Bell pepper",
-      "Onion",
-      "Rice"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Greek Salad/Pita",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Romaine lettuce",
-      "Gyro meat/chicken",
-      "Olives",
-      "Tomatoes",
-      "Bell peppers",
-      "Pita bread",
-      "Greek dressing",
-      "Feta"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "MegaSalad",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Mixed Greens Salad Mix",
-      "Black Beans",
-      "Chickpeas",
-      "Black Olives",
-      "Carrot",
-      "sunflower seeds",
-      "Grilled Chicken",
-      "Salad Dressing"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Enchiladas",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "echilada sauce",
-      "flour tortillas",
-      "cheese",
-      "black beans",
-      "avocados",
-      "ground beef",
-      "onion",
-      "sour cream"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Scnhitzel (Pork)",
+    "description": "Calzones",
     "category": "Lunch/Dinner",
     "preference": "High",
     "time": "Long",
     "cost": "$$",
-    "fill": "Needs Vegetable, Starch",
+    "fill": "Complete",
     "ingredients": [
-      "Pork Chops",
-      "Panko Break Crumbs",
-      "Lemon",
-      "Broccoli"
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Yeast (Option 1)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Flour (Option 1)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Marinara Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Artichokes (Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Olives"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pepperoni"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pizza Cheese"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pizza Dough (Option 2)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ricotta"
+      }
     ],
     "directions": "",
     "meal_photos": [],
@@ -1849,23 +833,38 @@
     "testy2": ""
   },
   {
-    "description": "Chicken Lo Mein",
+    "description": "Caprese Linguine",
     "category": "Lunch/Dinner",
     "preference": "High",
     "time": "Medium",
-    "cost": "$$",
+    "cost": "$",
     "fill": "Complete",
     "ingredients": [
-      "Lo Mein Noodles",
-      "Chicken",
-      "Bell pepper",
-      "Asparagus",
-      "Sesame Sauce",
-      "Garlic",
-      "Ginger",
-      "Oyster Sauce",
-      "Soy Sauce",
-      "Corn Starch"
+      {
+        "qty": null,
+        "unit": "",
+        "name": "cherry tomatoes"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "linguine"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "garlic"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "fresh mozzerella"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "basil"
+      }
     ],
     "directions": "",
     "meal_photos": [],
@@ -1874,92 +873,6 @@
     "testy3": "",
     "testy1": "",
     "testy2": ""
-  },
-  {
-    "description": "Deli Meat Sandwiches",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Deli meat",
-      "Sandwich Bread",
-      "Lettuce"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Ham Soup",
-    "category": "Lunch/Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "potatoes",
-      "ham",
-      "celery",
-      "onion",
-      "chicken broth",
-      "carrots"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "One Pan chicken thighs and beans",
-    "category": "Dinner",
-    "preference": "High",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Chicken thighs",
-      "Beans",
-      "Lemons",
-      "Rice"
-    ],
-    "directions": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {},
-    "testy3": "",
-    "testy1": "",
-    "testy2": ""
-  },
-  {
-    "description": "Salmon Bowl with Quinoa",
-    "category": "Lunch/Dinner",
-    "preference": "Medium",
-    "time": "Medium",
-    "cost": "$$",
-    "fill": "Complete",
-    "ingredients": [
-      "Salmon (Fish)",
-      "Quinoa",
-      "Broccoli",
-      "Bell Peppers",
-      "Chicken Broth"
-    ],
-    "directions": "",
-    "testy1": "",
-    "testy2": "",
-    "testy3": "",
-    "meal_photos": [],
-    "ingredient_photos": {},
-    "step_photos": {}
   },
   {
     "description": "Cereal",
@@ -1969,8 +882,16 @@
     "cost": "",
     "fill": "",
     "ingredients": [
-      "Cereal",
-      "Milk"
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cereal"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Milk"
+      }
     ],
     "directions": "1) Put cereal and milk into a bowl.",
     "testy1": "",
@@ -1992,5 +913,3005 @@
         "meal_media/cereal/step_photos/step_1/step_1_01.jpeg"
       ]
     }
+  },
+  {
+    "description": "Chicken & Veg Skewers",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Thigh/Breast"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Zuchini (optional)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Chicken and Dumplings",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bisquik"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Celery"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Broth (Large)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Chicken Curry",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Long",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Yellow Curry Powder"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Red Curry"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ginger"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Yellow Popato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cauliflower"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Chicken Lo Mein",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lo Mein Noodles"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Asparagus"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sesame Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Garlic"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ginger"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Oyster Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Soy Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Corn Starch"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Chicken Noodle/Rice Soup",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Broth"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Celery"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Noodle/Rice"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Chicken Pineapple Quesadilla's",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pineapple"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Quesadilla Cheese"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tortillas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salsa"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sour Cream (Optional)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Chicken Quinoa Salad",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Corn Kernals"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Grilled Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chick Pease"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Quinoa"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Olives"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Artichoke"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Pepper"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Chicken Sandwich",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sliced Bread"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lettuce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sandwich Cheese"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mayo"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mustard"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Classic Spaghetti",
+    "category": "Dinner",
+    "preference": "Very High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Spaghetti Noodles"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salsa"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Petite Diced Tomato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Itialian Spice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Basil (Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Itialian Sausage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bread (Optional)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Corned Beef & Cabbage",
+    "category": "Dinner",
+    "preference": "Low",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Corned Beef"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cabbage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Potato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Beef Broth"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Beer"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Crispy Shannon Spiced Chicken/Fish",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken/Fish"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Panko Bread Crumbs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Shannon Spice"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Deli Meat Sandwiches",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Deli meat"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sandwich Bread"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lettuce"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Eggs & JD Potato's",
+    "category": "Breakfast/Lunch",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Needs Vegitable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Russet Potato's"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Seasoned Salt"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Enchiladas",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "echilada sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "flour tortillas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "cheese"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "black beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "avocados"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "ground beef"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "sour cream"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Fajita's",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Flour Tortilla's"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cheese"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Peppers"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Beans (Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sour Cream (Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Fajita Spice Blend"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Fish Tacos",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Fish"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Flour"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Egg"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cabbage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mayo"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Southwest Seasoning"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "LIme"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Corn Torilla's"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Greek Salad/Pita",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Romaine lettuce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Gyro meat/chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Olives"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomatoes"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell peppers"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pita bread"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Greek dressing"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Feta"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Grilled Cheese & Tomato Soup",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Short",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomato Soup"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sliced Bread"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Grilled Cheese Cheese"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Grilled Chicken & Macaroni Salad",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Macaroni Noodles"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mayo"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Celery"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mustard"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "White Vinegar"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Grilled Chicken Salad",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salad Mix/Lettuce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Assorted Vegi's (optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chick Peas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Olives"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Ham",
+    "category": "Dinner",
+    "preference": "Low",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ham"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Ham dinner",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ham"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Baked potatoes"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Veggies"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Ham Soup",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "potatoes"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "ham"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "celery"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "chicken broth"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "carrots"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Hamburgers",
+    "category": "Dinner",
+    "preference": "Low",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Beef"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Hamburger Buns"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lettuce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Hamburger Cheese"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Itialian Sausage Soup",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Itialian Sausage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Broth"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "White Beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Zucchini"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Kale/Spinach"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Fire roasted tomatoes"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Kielbasa",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Short",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Kielbasa"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Korean Bibimpap",
+    "category": "Dinner",
+    "preference": "Very High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Beef"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ginger"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Zucchini"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ginger"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Red Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Lasagna",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ricotta"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lasagna Noodles"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mozzerella"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Beef"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Garlic"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Crushed Tomato's"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomato Sauce"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Lentil Stew",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Short",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Garlic"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cumin"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Curry Powder"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Petite Diced Tomato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lentils"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Vegtable Broth"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Lettuce Wraps",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground chicken/turkey"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "hoison sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lettuce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ginger"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Water Chestnuts"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Green Onion"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Meatloaf",
+    "category": "Dinner",
+    "preference": "Low",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Beef"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bread Crumbs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Shallot"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Beef Broth"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Panko"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ketchup"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomato Paste (Optional)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "MegaSalad",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Mixed Greens Salad Mix"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chickpeas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Olives"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrot"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "sunflower seeds"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Grilled Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salad Dressing"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Mozzarella-Crusted Chicken with Blistered Tomatoes & Potato Wedges",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "35 min",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": 2.0,
+        "unit": "",
+        "name": "chicken breasts"
+      },
+      {
+        "qty": 4.0,
+        "unit": "",
+        "name": "Yukon gold potatoes"
+      },
+      {
+        "qty": 1.0,
+        "unit": "cup",
+        "name": "mozzarella cheese"
+      },
+      {
+        "qty": 0.5,
+        "unit": "cup",
+        "name": "panko breadcrumbs"
+      },
+      {
+        "qty": 1.0,
+        "unit": "cup",
+        "name": "cherry tomatoes"
+      },
+      {
+        "qty": 2.0,
+        "unit": "tbsp",
+        "name": "olive oil"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salt"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pepper"
+      }
+    ],
+    "directions": "1. Preheat oven to 425F\n2. Roast potatoes\n3. Bake chicken\n4. Cook tomatoes\n5. Serve",
+    "meal_photos": [
+      "meal_photos/mozzarella_chicken.jpg"
+    ],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "notes": ""
+  },
+  {
+    "description": "Omlets",
+    "category": "Breakfast/Lunch",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Diced Ham/Bacon"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Green/Red Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Diced white onion"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "One Pan chicken thighs and beans",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken thighs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lemons"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Pasta Primavera",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Penne Pasta"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Red Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Red Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Broccoli"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cherry Tomato's"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Zucchini"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cashews"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lemon Juice"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Pasta Salad with Chicken",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Noodles"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chick Peas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Olives"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Artichokes"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Basalmic Vinagrette"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Celery"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Pepper"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Pizza",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Long",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Yeast (Option 1)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Flour (Option 1)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Marinara Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Artichokes (Optional)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Black Olives"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pepperoni"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pizza Cheese"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pizza Dough (Option 2)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Pork Chop Instapot",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pork Chops"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Broth"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Pork Loin in Crock Pot",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Short",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pork Loin"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "BBQ Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salsa"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Pork Thai Basil Stir Fry",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Pork"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Thai Basil"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Shallot"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Baby Bok Choy"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lime"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Fish Sauce"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Pot Stickers and Edemame",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pot Stickers (frozen)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Edemame"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Power Bowl",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Farro"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sweet Potato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pistacio"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Vegetable Broth"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Shallot"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Quiche in 5\" pans",
+    "category": "Breakfast",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Crisco"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Flour"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Breakfast Meat"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Red beans and rice",
+    "category": "---",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Red beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sausage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Ribs & Rice",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Long",
+    "cost": "$$$",
+    "fill": "Needs Vegetable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ribs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "BBQ Sauce"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Russet Sausage Breakfast Burrito's",
+    "category": "Breakfast/Lunch",
+    "preference": "Very High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tortillas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Breakfast Sausage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Russet Potato"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Salmon Bowl with Quinoa",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salmon (Fish)"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Quinoa"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Broccoli"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bell Peppers"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Broth"
+      }
+    ],
+    "directions": "",
+    "testy1": "",
+    "testy2": "",
+    "testy3": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {}
+  },
+  {
+    "description": "Sandwich (Classic)",
+    "category": "Lunch",
+    "preference": "High",
+    "time": "Short",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sliced Bread"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lunch Meat"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lettuce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Any desired special sandwich upgrades (banana peppers or fancy mustard\u2026)"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Scnhitzel (Pork)",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Long",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pork Chops"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Panko Break Crumbs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Lemon"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Broccoli"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Seame Beef/Pork/Fish Tacos",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Radishes"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cucumbers"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Scallions"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sour Cream"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cabbage"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Beef/Turkey/Pork"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Flour Tortillas"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Shoyu Chicken & Rice",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Drumstick/Thigh"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ginger"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Soy Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Brown Sugar"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Simple Chicken",
+    "category": "Lunch/Dinner",
+    "preference": "Very High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Simple Quinoa",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Quinoa"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Simple Dressing"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "What ever veggies we got"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Sloppy Joes",
+    "category": "Dinner",
+    "preference": "Very High",
+    "time": "Short",
+    "cost": "$",
+    "fill": "Needs Vegetable",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ground Beef/Turkey"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sloppy Joe Bread"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomato Paste"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Steak Seasoning"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Red Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomato Sauce"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Southwest Chicken (HF)",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken Breast"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Southwest seasoning"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sweet Potato"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Red Bell Pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Feta"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Spaghetti and Meatballs (Lidia ish)",
+    "category": "Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Spaghetti"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Meat Balls"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "San Marizano Tomato's"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Basil"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Spanish Rice",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tomato Paste"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Jasmine Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Garlic"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Stir Fry",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Assorted Vegi's"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Soy Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Ginger"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Sushi",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Long",
+    "cost": "$$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice Vinigar"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sticky Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Seaweed"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Imitation Crab"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Avocado"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Soy Sauce"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Cucumber"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Seasame Seeds"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Sweet Bacon Breakfast Burrito's",
+    "category": "Breakfast",
+    "preference": "Very High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tortillas"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Bacon"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Eggs"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Sweet Potato"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Tuna Fish Casserole",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "egg noodles"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Tuna fish"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "green pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "mushroom soup"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Turkey and rice soup",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Turkey"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Rice"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Carrots"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Celery"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "Turkey Chili Soup",
+    "category": "Lunch/Dinner",
+    "preference": "High",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "ground turkey"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "onion"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "bell pepper"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "white beans"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "salsa verde"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "chicken broth"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
+  },
+  {
+    "description": "When Steak Met Potatoes with Creamy Peppercorn Sauce & Garlic Kale",
+    "category": "Lunch/Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$$",
+    "fill": "Complete",
+    "ingredients": [
+      {
+        "qty": 2.0,
+        "unit": "",
+        "name": "sirloin steaks"
+      },
+      {
+        "qty": 12.0,
+        "unit": "oz",
+        "name": "Yukon gold potatoes"
+      },
+      {
+        "qty": 2.0,
+        "unit": "clove",
+        "name": "garlic"
+      },
+      {
+        "qty": 4.0,
+        "unit": "oz",
+        "name": "kale"
+      },
+      {
+        "qty": 0.25,
+        "unit": "cup",
+        "name": "sour cream"
+      },
+      {
+        "qty": 0.5,
+        "unit": "cup",
+        "name": "milk"
+      },
+      {
+        "qty": 1.0,
+        "unit": "tbsp",
+        "name": "butter"
+      },
+      {
+        "qty": 1.0,
+        "unit": "tsp",
+        "name": "cracked black peppercorns"
+      },
+      {
+        "qty": 1.0,
+        "unit": "tbsp",
+        "name": "olive oil"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Salt"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Pepper"
+      }
+    ],
+    "directions": "1. Wash and cut potatoes into 1-inch cubes\\n\\\n2. Boil potatoes in salted water for 15-20 minutes until tender\\n\\\n3. Drain and mash potatoes with butter, milk, salt, and pepper\\n\\\n4. Mince garlic and remove kale stems, then chop leaves\\n\\\n5. Heat olive oil in a pan and saut\u00e9 garlic for 30 seconds\\n\\\n6. Add kale and cook until wilted, season with salt and pepper\\n\\\n7. Pat steaks dry and season both sides with salt and pepper\\n\\\n8. Heat pan over medium-high heat and cook steaks 3-5 minutes per side\\n\\\n9. Remove steaks and let rest\\n\\\n10. In same pan, add peppercorns, sour cream, and a splash of water to create sauce\\n\\\n11. Simmer until slightly thickened\\n\\\n12. Plate mashed potatoes, kale, and steak\\n\\\n13. Drizzle peppercorn sauce over steak and serve\"",
+    "notes": "",
+    "testy1": "",
+    "testy2": "",
+    "testy3": "",
+    "meal_photos": [
+      "meal_photos/when_steak_met_potatoes_finished.jpg"
+    ],
+    "ingredient_photos": {},
+    "step_photos": {}
+  },
+  {
+    "description": "Whole Crock/Insta-Pot Chicken",
+    "category": "Dinner",
+    "preference": "Medium",
+    "time": "Medium",
+    "cost": "$$",
+    "fill": "Needs Vegetable, Starch",
+    "ingredients": [
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Whole Chicken"
+      },
+      {
+        "qty": null,
+        "unit": "",
+        "name": "Onion"
+      }
+    ],
+    "directions": "",
+    "meal_photos": [],
+    "ingredient_photos": {},
+    "step_photos": {},
+    "testy3": "",
+    "testy1": "",
+    "testy2": ""
   }
 ]
